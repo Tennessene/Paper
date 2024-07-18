@@ -5,7 +5,7 @@ Subject: [PATCH] fixup! Add ArmorStand Item Meta
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
-index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b2649522e08 100644
+index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..47bd58e0785675c5278f0f67292b9253122205f8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
 @@ -15,17 +15,12 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
@@ -41,7 +41,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
          this.entityTag = armorStand.entityTag;
      }
  
-@@ -52,38 +40,40 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -52,38 +40,36 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
  
          getOrEmpty(tag, CraftMetaArmorStand.ENTITY_TAG).ifPresent((nbt) -> {
              this.entityTag = nbt.copyTag();
@@ -97,18 +97,14 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
 +            populateTagIfNull();
 +            entityTag.putBoolean(MARKER.NBT, value);
 +        });
-+        SerializableMeta.getObjectOptionally(String.class, map, ENTITY_ID, true).ifPresentOrElse((value) -> {
++        SerializableMeta.getObjectOptionally(String.class, map, ENTITY_ID, true).ifPresent((value) -> {
 +            populateTagIfNull();
 +            entityTag.putString(ENTITY_ID.NBT, value);
-+        }, () -> {
-+            if (entityTag != null && !entityTag.contains(ENTITY_ID.NBT)) {
-+                entityTag.putString(ENTITY_ID.NBT, "minecraft:armorstand");
-+            }
 +        });
          // Paper end
      }
  
-@@ -107,31 +97,6 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -107,31 +93,6 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
      void applyToItem(CraftMetaItem.Applicator tag) {
          super.applyToItem(tag);
  
@@ -140,7 +136,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
          if (this.entityTag != null) {
              tag.put(CraftMetaArmorStand.ENTITY_TAG, CustomData.of(this.entityTag));
          }
-@@ -148,7 +113,7 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -148,7 +109,7 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
      }
  
      boolean isArmorStandEmpty() {
@@ -149,7 +145,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
      }
  
      @Override
-@@ -160,12 +125,7 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -160,12 +121,7 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
              CraftMetaArmorStand that = (CraftMetaArmorStand) meta;
  
              // Paper start
@@ -163,7 +159,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
              // Paper end
          }
          return true;
-@@ -184,13 +144,6 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -184,13 +140,6 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
          if (this.entityTag != null) {
              hash = 73 * hash + this.entityTag.hashCode();
          }
@@ -177,7 +173,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
  
          return original != hash ? CraftMetaArmorStand.class.hashCode() ^ hash : hash;
      }
-@@ -200,24 +153,31 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
+@@ -200,24 +149,31 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
          super.serialize(builder);
  
          // Paper start
@@ -185,10 +181,8 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
 -            builder.put(INVISIBLE.BUKKIT, invisible);
 +        if (entityTag == null) {
 +            return builder;
-         }
- 
--        if (noBasePlate != null) {
--            builder.put(NO_BASE_PLATE.BUKKIT, noBasePlate);
++        }
++
 +        if (this.entityTag.get(CraftMetaArmorStand.ENTITY_ID.NBT) != null) {
 +            builder.put(ENTITY_ID.BUKKIT, this.entityTag.getString(CraftMetaArmorStand.ENTITY_ID.NBT));
 +        }
@@ -196,40 +190,42 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..be6670e260c1834a16e722df1a761b26
 +            builder.put(INVISIBLE.BUKKIT, this.entityTag.getBoolean(CraftMetaArmorStand.INVISIBLE.NBT));
          }
  
--        if (showArms != null) {
--            builder.put(SHOW_ARMS.BUKKIT, showArms);
+-        if (noBasePlate != null) {
+-            builder.put(NO_BASE_PLATE.BUKKIT, noBasePlate);
 +        if (this.entityTag.get(CraftMetaArmorStand.NO_BASE_PLATE.NBT) != null) {
 +            builder.put(NO_BASE_PLATE.BUKKIT, this.entityTag.getBoolean(CraftMetaArmorStand.NO_BASE_PLATE.NBT));
          }
  
--        if (small != null) {
--            builder.put(SMALL.BUKKIT, small);
+-        if (showArms != null) {
+-            builder.put(SHOW_ARMS.BUKKIT, showArms);
 +        if (this.entityTag.get(CraftMetaArmorStand.SHOW_ARMS.NBT) != null) {
 +            builder.put(SHOW_ARMS.BUKKIT, this.entityTag.getBoolean(CraftMetaArmorStand.SHOW_ARMS.NBT));
          }
  
--        if (marker != null) {
--            builder.put(MARKER.BUKKIT, marker);
+-        if (small != null) {
+-            builder.put(SMALL.BUKKIT, small);
 +        if (this.entityTag.get(CraftMetaArmorStand.SMALL.NBT) != null) {
 +            builder.put(SMALL.BUKKIT, this.entityTag.getBoolean(CraftMetaArmorStand.SMALL.NBT));
-+        }
-+
+         }
+ 
+-        if (marker != null) {
+-            builder.put(MARKER.BUKKIT, marker);
 +        if (this.entityTag.get(CraftMetaArmorStand.MARKER.NBT) != null) {
 +            builder.put(MARKER.BUKKIT, this.entityTag.getBoolean(CraftMetaArmorStand.MARKER.NBT));
          }
          // Paper end
  
-@@ -235,55 +195,66 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
-         return clone;
+@@ -236,54 +192,66 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
      }
  
+     // Paper start
 +    private void populateTagIfNull() {
 +        if (this.entityTag == null) {
 +            this.entityTag = new CompoundTag();
++            this.entityTag.putString(ENTITY_ID.NBT, "minecraft:armorstand");
 +        }
 +    }
 +
-     // Paper start
      @Override
      public boolean isInvisible() {
 -        return invisible != null && invisible;
