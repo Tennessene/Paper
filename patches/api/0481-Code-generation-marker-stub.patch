@@ -596,25 +596,25 @@ index 2ac685fb1817f3ce06ebe6391cc863712d68367c..056d44476b2118b124ad2f7262aee863
  
      // Paper start
 diff --git a/src/main/java/org/bukkit/entity/Cat.java b/src/main/java/org/bukkit/entity/Cat.java
-index d03adfaa4176617ef2ace2754fe02b63860e3aee..fceb2f0a452a1ce72988bbd1ecca599cfb6af6d9 100644
+index 60cf07bff0898176c8d7af84b3e65d7a1ee8cf2e..2b55d9f4dac309a4f906d1e85202389f337ed058 100644
 --- a/src/main/java/org/bukkit/entity/Cat.java
 +++ b/src/main/java/org/bukkit/entity/Cat.java
-@@ -46,6 +46,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
-      * Represents the various different cat types there are.
+@@ -52,6 +52,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
       */
-     public enum Type implements Keyed {
+     interface Type extends OldEnum<Type>, Keyed {
+ 
 +        // Paper start - Generated/CatType
-         TABBY("tabby"),
-         BLACK("black"),
-         RED("red"),
-@@ -57,6 +58,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
-         WHITE("white"),
-         JELLIE("jellie"),
-         ALL_BLACK("all_black");
+         Type TABBY = getType("tabby");
+         Type BLACK = getType("black");
+         Type RED = getType("red");
+@@ -63,6 +64,7 @@ public interface Cat extends Tameable, Sittable, io.papermc.paper.entity.CollarC
+         Type WHITE = getType("white");
+         Type JELLIE = getType("jellie");
+         Type ALL_BLACK = getType("all_black");
 +        // Paper end - Generated/CatType
  
-         private final NamespacedKey key;
- 
+         @NotNull
+         private static Type getType(@NotNull String key) {
 diff --git a/src/main/java/org/bukkit/entity/EntityType.java b/src/main/java/org/bukkit/entity/EntityType.java
 index 6905614c3d277a3a725554f02cc92d4b3430eecc..e193c2caa7fed0b9fc17d579bb6cb5ccb8e4ca4e 100644
 --- a/src/main/java/org/bukkit/entity/EntityType.java
@@ -651,25 +651,25 @@ index 473a7e36ad64f866d1d2e09e2ecb2e9881668faf..1fb12e0bc77247e9f6562bb7a8d0ff35
  
      // Paper start - Add more fox behavior API
 diff --git a/src/main/java/org/bukkit/entity/Frog.java b/src/main/java/org/bukkit/entity/Frog.java
-index 0960bdbb3253bfe109dc6283244b8c9d95a850f7..d11cfd431cee09886ecd9d9416de85f56ac90462 100644
+index 7cf8ae63eb7a7f6c09510a4ad9e20336863aefc1..48fc7d9cd74d34cfe1e9aff293ba267f8ae1aaa9 100644
 --- a/src/main/java/org/bukkit/entity/Frog.java
 +++ b/src/main/java/org/bukkit/entity/Frog.java
-@@ -46,6 +46,7 @@ public interface Frog extends Animals {
+@@ -50,6 +50,7 @@ public interface Frog extends Animals {
       */
-     public enum Variant implements Keyed {
+     interface Variant extends OldEnum<Variant>, Keyed {
  
 +        // Paper start - Generated/FrogVariant
          /**
           * Temperate (brown-orange) frog.
           */
-@@ -58,6 +59,7 @@ public interface Frog extends Animals {
+@@ -62,6 +63,7 @@ public interface Frog extends Animals {
           * Cold (green) frog.
           */
-         COLD;
+         Variant COLD = getVariant("cold");
 +        // Paper end - Generated/FrogVariant
-         private final NamespacedKey key;
  
-         private Variant() {
+         @NotNull
+         private static Variant getVariant(@NotNull String key) {
 diff --git a/src/main/java/org/bukkit/entity/Panda.java b/src/main/java/org/bukkit/entity/Panda.java
 index 4f06870cc8d8aab93aa83b1b8165e6714884372c..16f2df7517006441d12926aff8745d6cc4dd6760 100644
 --- a/src/main/java/org/bukkit/entity/Panda.java
@@ -729,25 +729,25 @@ index 84bba32e80d755f094975b667f1bf2a132087f4f..4fec7b3bbeae7ab0538f3de6e83faa9c
      }
  }
 diff --git a/src/main/java/org/bukkit/entity/Villager.java b/src/main/java/org/bukkit/entity/Villager.java
-index 48c8af31b2bdc849b5269784ff3829ba31fb3f47..2b376724a4db40ad9de41843e5cb8f6b66380b2e 100644
+index 444744ea6f5921b0ae229995f8b15ea9d980c402..4830835963c36a1a4289520522d4ca67d31d0855 100644
 --- a/src/main/java/org/bukkit/entity/Villager.java
 +++ b/src/main/java/org/bukkit/entity/Villager.java
-@@ -167,6 +167,7 @@ public interface Villager extends AbstractVillager {
+@@ -171,6 +171,7 @@ public interface Villager extends AbstractVillager {
       */
-     public enum Type implements Keyed {
+     interface Type extends OldEnum<Type>, Keyed {
  
 +        // Paper start - Generated/VillagerType
-         DESERT,
-         JUNGLE,
-         PLAINS,
-@@ -174,6 +175,7 @@ public interface Villager extends AbstractVillager {
-         SNOW,
-         SWAMP,
-         TAIGA;
+         Type DESERT = getType("desert");
+         Type JUNGLE = getType("jungle");
+         Type PLAINS = getType("plains");
+@@ -178,6 +179,7 @@ public interface Villager extends AbstractVillager {
+         Type SNOW = getType("snow");
+         Type SWAMP = getType("swamp");
+         Type TAIGA = getType("taiga");
 +        // Paper end - Generated/VillagerType
-         private final NamespacedKey key;
  
-         private Type() {
+         @NotNull
+         private static Type getType(@NotNull String key) {
 diff --git a/src/main/java/org/bukkit/entity/Wolf.java b/src/main/java/org/bukkit/entity/Wolf.java
 index 4b84c04675775e2a606630b00de8afe51665cebc..263e65af2ed3818215802de75034fe503b3d9445 100644
 --- a/src/main/java/org/bukkit/entity/Wolf.java
@@ -849,7 +849,7 @@ index cbce835ed6d44e5b8c9aaae4e36a77f8e5bed45f..4bac8e092bc59405a9bba15e62b513cc
      private final net.kyori.adventure.text.format.NamedTextColor color;
      ItemRarity(final net.kyori.adventure.text.format.NamedTextColor color) {
 diff --git a/src/main/java/org/bukkit/inventory/ItemType.java b/src/main/java/org/bukkit/inventory/ItemType.java
-index 6bc1853ada3ea38bc36cb31fbb5ce246347fe5d4..d167891f383bffc4f9eb1a589265c4e65efc7efa 100644
+index 885a37af013b7934768fb4a742b0a69e0b6f034c..78c3d9d05d02a537e13bfe36d1ac541772791a3e 100644
 --- a/src/main/java/org/bukkit/inventory/ItemType.java
 +++ b/src/main/java/org/bukkit/inventory/ItemType.java
 @@ -89,6 +89,7 @@ public interface ItemType extends Keyed, Translatable, net.kyori.adventure.trans
@@ -949,25 +949,25 @@ index 09a6a1b9b9ffb1e269bdaa1efc19cd8bedc2b499..3eecca87f204dcaebf580b7284859c43
 +    // Paper end - Generated/CraftingBookCategory
  }
 diff --git a/src/main/java/org/bukkit/map/MapCursor.java b/src/main/java/org/bukkit/map/MapCursor.java
-index bd37310d27e73bfe65d680594f3a9be8577a72a0..65aab1fd499984d0b4665c72d51c4a16f98a2775 100644
+index fb6b1491202bbc1ea0d5475c9c6574b0c16943b4..3ded12069665cb23f9c6d0853b0f322412c2e668 100644
 --- a/src/main/java/org/bukkit/map/MapCursor.java
 +++ b/src/main/java/org/bukkit/map/MapCursor.java
-@@ -282,6 +282,7 @@ public final class MapCursor {
-      * resource pack.
+@@ -287,6 +287,7 @@ public final class MapCursor {
       */
-     public enum Type implements Keyed {
+     public interface Type extends OldEnum<Type>, Keyed {
+ 
 +        // Paper start - Generated/MapCursorType
-         PLAYER(0, "player"),
-         FRAME(1, "frame"),
-         RED_MARKER(2, "red_marker"),
-@@ -332,6 +333,7 @@ public final class MapCursor {
-         SWAMP_HUT(33, "swamp_hut"),
-         TRIAL_CHAMBERS(34, "trial_chambers")
-         ;
+         Type PLAYER = getType("player");
+         Type FRAME = getType("frame");
+         Type RED_MARKER = getType("red_marker");
+@@ -336,6 +337,7 @@ public final class MapCursor {
+         @org.jetbrains.annotations.ApiStatus.Experimental // Paper - add missing annotation
+         Type SWAMP_HUT = getType("swamp_hut");
+         Type TRIAL_CHAMBERS = getType("trial_chambers");
 +        // Paper end - Generated/MapCursorType
  
-         private final byte value;
-         private final NamespacedKey key;
+         @NotNull
+         private static Type getType(@NotNull String key) {
 diff --git a/src/main/java/org/bukkit/map/MapPalette.java b/src/main/java/org/bukkit/map/MapPalette.java
 index c80faa079eca1564847070f0338fc98024639829..825b6c7b4e6b24f8d49da7b44f37e8a5ddc2e2c1 100644
 --- a/src/main/java/org/bukkit/map/MapPalette.java

@@ -94,10 +94,7 @@ public final class Rewriters {
                 }
             })
             .register("Biome", Biome.class, new EnumRegistryRewriter<>(Registries.BIOME).nameAsKey())
-            .register("FrogVariant", Frog.Variant.class, new EnumRegistryRewriter<>(Registries.FROG_VARIANT).nameAsKey())
-            .register("VillagerType", Villager.Type.class, new EnumRegistryRewriter<>(Registries.VILLAGER_TYPE).nameAsKey())
             .register("Attribute", Attribute.class, new EnumRegistryRewriter<>(Registries.ATTRIBUTE))
-            .register("CatType", Cat.Type.class, new EnumRegistryRewriter<>(Registries.CAT_VARIANT))
             .register("PotionType", PotionType.class, new EnumRegistryRewriter<>(Registries.POTION))
             .register("Art", Art.class, new EnumRegistryRewriter<>(Registries.PAINTING_VARIANT) {
                 @Override
@@ -112,24 +109,6 @@ public final class Rewriters {
             })
             .register("EntityType", EntityType.class, new EntityTypeRewriter())
             .register("PatternType", PatternType.class, new PatternTypeRewriter())
-            .register("MapCursorType", MapCursor.Type.class, new EnumRegistryRewriter<>(Registries.MAP_DECORATION_TYPE) {
-                @Override
-                protected EnumValue.Builder rewriteEnumValue(Holder.Reference<MapDecorationType> reference) {
-                    return super.rewriteEnumValue(reference).arguments(
-                        Integer.toString(BuiltInRegistries.MAP_DECORATION_TYPE.getId(reference.value())),
-                        quoted(reference.key().location().getPath())
-                    );
-                }
-
-                @Override
-                protected @Nullable SingleFlagHolder getRequiredFeature(Holder.Reference<MapDecorationType> reference) {
-                    @Nullable SingleFlagHolder result = super.getRequiredFeature(reference);
-                    if (result != null) {
-                        return result;
-                    }
-                    return ExperimentalHelper.findMapDecorationTypeRelatedFeatureFlag(reference.key());
-                }
-            })
             .register("DisplaySlot", DisplaySlot.class, new EnumCloneRewriter<>(net.minecraft.world.scores.DisplaySlot.class) {
                 @Override
                 protected EnumValue.Builder rewriteEnumValue(net.minecraft.world.scores.DisplaySlot slot) {
@@ -184,6 +163,16 @@ public final class Rewriters {
                 holder("StatisticCustom", new StatisticRewriter.Custom()),
                 holder("StatisticType", new StatisticRewriter.Type())
             ))
+            .register("MapCursorType", MapCursor.Type.class, new RegistryFieldRewriter<>(Registries.MAP_DECORATION_TYPE, "getType") {
+                @Override
+                protected @Nullable SingleFlagHolder getRequiredFeature(Holder.Reference<MapDecorationType> reference) {
+                    @Nullable SingleFlagHolder result = super.getRequiredFeature(reference);
+                    if (result != null) {
+                        return result;
+                    }
+                    return ExperimentalHelper.findMapDecorationTypeRelatedFeatureFlag(reference.key());
+                }
+            })
             .register("Structure", Structure.class, new RegistryFieldRewriter<>(Registries.STRUCTURE, "getStructure"))
             .register("StructureType", StructureType.class, new RegistryFieldRewriter<>(Registries.STRUCTURE_TYPE, "getStructureType"))
             .register("TrimPattern", TrimPattern.class, new RegistryFieldRewriter<>(Registries.TRIM_PATTERN, "getTrimPattern"))
@@ -192,6 +181,9 @@ public final class Rewriters {
             .register("GameEvent", GameEvent.class, new RegistryFieldRewriter<>(Registries.GAME_EVENT, "getEvent"))
             .register("MusicInstrument", MusicInstrument.class, new RegistryFieldRewriter<>(Registries.INSTRUMENT, "getInstrument"))
             .register("WolfVariant", Wolf.Variant.class, new RegistryFieldRewriter<>(Registries.WOLF_VARIANT, "getVariant"))
+            .register("CatType", Cat.Type.class, new RegistryFieldRewriter<>(Registries.CAT_VARIANT, "getType"))
+            .register("FrogVariant", Frog.Variant.class, new RegistryFieldRewriter<>(Registries.FROG_VARIANT, "getVariant"))
+            .register("VillagerType", Villager.Type.class, new RegistryFieldRewriter<>(Registries.VILLAGER_TYPE, "getType"))
             .register("JukeboxSong", JukeboxSong.class, new JukeboxSongRewriter())
             .register("MemoryKey", MemoryKey.class, new MemoryKeyRewriter())
             .register("ItemType", ItemType.class, new ItemTypeRewriter())

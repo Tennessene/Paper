@@ -1,8 +1,12 @@
 package org.bukkit.map;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
+import java.util.Locale;
 import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
+import org.bukkit.util.OldEnum;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -163,7 +167,7 @@ public final class MapCursor {
      */
     @org.jetbrains.annotations.ApiStatus.Internal // Paper
     public byte getRawType() {
-        return type.value;
+        return type.getValue();
     }
 
     /**
@@ -281,72 +285,102 @@ public final class MapCursor {
      * index in the file './assets/minecraft/textures/map/map_icons.png' from minecraft.jar or from a
      * resource pack.
      */
-    public enum Type implements Keyed {
+    public interface Type extends OldEnum<Type>, Keyed {
+
         // Paper start - Generated/MapCursorType
         // @GeneratedFrom 1.21
-        BANNER_BLACK(25, "banner_black"),
-        BANNER_BLUE(21, "banner_blue"),
-        BANNER_BROWN(22, "banner_brown"),
-        BANNER_CYAN(19, "banner_cyan"),
-        BANNER_GRAY(17, "banner_gray"),
-        BANNER_GREEN(23, "banner_green"),
-        BANNER_LIGHT_BLUE(13, "banner_light_blue"),
-        BANNER_LIGHT_GRAY(18, "banner_light_gray"),
-        BANNER_LIME(15, "banner_lime"),
-        BANNER_MAGENTA(12, "banner_magenta"),
-        BANNER_ORANGE(11, "banner_orange"),
-        BANNER_PINK(16, "banner_pink"),
-        BANNER_PURPLE(20, "banner_purple"),
-        BANNER_RED(24, "banner_red"),
-        BANNER_WHITE(10, "banner_white"),
-        BANNER_YELLOW(14, "banner_yellow"),
-        BLUE_MARKER(3, "blue_marker"),
-        FRAME(1, "frame"),
+        Type BANNER_BLACK = getType("banner_black");
+
+        Type BANNER_BLUE = getType("banner_blue");
+
+        Type BANNER_BROWN = getType("banner_brown");
+
+        Type BANNER_CYAN = getType("banner_cyan");
+
+        Type BANNER_GRAY = getType("banner_gray");
+
+        Type BANNER_GREEN = getType("banner_green");
+
+        Type BANNER_LIGHT_BLUE = getType("banner_light_blue");
+
+        Type BANNER_LIGHT_GRAY = getType("banner_light_gray");
+
+        Type BANNER_LIME = getType("banner_lime");
+
+        Type BANNER_MAGENTA = getType("banner_magenta");
+
+        Type BANNER_ORANGE = getType("banner_orange");
+
+        Type BANNER_PINK = getType("banner_pink");
+
+        Type BANNER_PURPLE = getType("banner_purple");
+
+        Type BANNER_RED = getType("banner_red");
+
+        Type BANNER_WHITE = getType("banner_white");
+
+        Type BANNER_YELLOW = getType("banner_yellow");
+
+        Type BLUE_MARKER = getType("blue_marker");
+
+        Type FRAME = getType("frame");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        JUNGLE_TEMPLE(32, "jungle_temple"),
-        MANSION(8, "mansion"),
-        MONUMENT(9, "monument"),
-        PLAYER(0, "player"),
-        PLAYER_OFF_LIMITS(7, "player_off_limits"),
-        PLAYER_OFF_MAP(6, "player_off_map"),
-        RED_MARKER(2, "red_marker"),
-        RED_X(26, "red_x"),
+        Type JUNGLE_TEMPLE = getType("jungle_temple");
+
+        Type MANSION = getType("mansion");
+
+        Type MONUMENT = getType("monument");
+
+        Type PLAYER = getType("player");
+
+        Type PLAYER_OFF_LIMITS = getType("player_off_limits");
+
+        Type PLAYER_OFF_MAP = getType("player_off_map");
+
+        Type RED_MARKER = getType("red_marker");
+
+        Type RED_X = getType("red_x");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        SWAMP_HUT(33, "swamp_hut"),
-        TARGET_POINT(5, "target_point"),
-        TARGET_X(4, "target_x"),
-        TRIAL_CHAMBERS(34, "trial_chambers"),
+        Type SWAMP_HUT = getType("swamp_hut");
+
+        Type TARGET_POINT = getType("target_point");
+
+        Type TARGET_X = getType("target_x");
+
+        Type TRIAL_CHAMBERS = getType("trial_chambers");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        VILLAGE_DESERT(27, "village_desert"),
+        Type VILLAGE_DESERT = getType("village_desert");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        VILLAGE_PLAINS(28, "village_plains"),
+        Type VILLAGE_PLAINS = getType("village_plains");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        VILLAGE_SAVANNA(29, "village_savanna"),
+        Type VILLAGE_SAVANNA = getType("village_savanna");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        VILLAGE_SNOWY(30, "village_snowy"),
+        Type VILLAGE_SNOWY = getType("village_snowy");
+
         @org.bukkit.MinecraftExperimental(org.bukkit.MinecraftExperimental.Requires.TRADE_REBALANCE)
         @org.jetbrains.annotations.ApiStatus.Experimental
-        VILLAGE_TAIGA(31, "village_taiga");
+        Type VILLAGE_TAIGA = getType("village_taiga");
         // Paper end - Generated/MapCursorType
 
-        private final byte value;
-        private final NamespacedKey key;
-
-        Type(int value, String key) {
-            this.value = (byte) value;
-            this.key = NamespacedKey.minecraft(key);
-        }
-
         @NotNull
-        @Override
-        public NamespacedKey getKey() {
-            return key;
+        private static Type getType(@NotNull String key) {
+            NamespacedKey namespacedKey = NamespacedKey.minecraft(key);
+            Type type = Registry.MAP_DECORATION_TYPE.get(namespacedKey);
+
+            Preconditions.checkNotNull(type, "No type found for %s. This is a bug.", namespacedKey);
+            return type;
         }
 
         /**
@@ -356,9 +390,7 @@ public final class MapCursor {
          * @apiNote Internal Use Only
          */
         @org.jetbrains.annotations.ApiStatus.Internal // Paper
-        public byte getValue() {
-            return value;
-        }
+        byte getValue();
 
         /**
          * Get a cursor by its internal value.
@@ -369,11 +401,34 @@ public final class MapCursor {
          */
         @org.jetbrains.annotations.ApiStatus.Internal // Paper
         @Nullable
-        public static Type byValue(byte value) {
+        static Type byValue(byte value) {
             for (Type t : values()) {
-                if (t.value == value) return t;
+                if (t.getValue() == value) return t;
             }
             return null;
+        }
+
+        /**
+         * @param name of the type.
+         * @return the type with the given name.
+         * @deprecated only for backwards compatibility, use {@link Registry#get(NamespacedKey)} instead.
+         */
+        @NotNull
+        @Deprecated(since = "1.21")
+        static Type valueOf(@NotNull String name) {
+            Type type = Registry.MAP_DECORATION_TYPE.get(NamespacedKey.fromString(name.toLowerCase(Locale.ROOT)));
+            Preconditions.checkArgument(type != null, "No Type found with the name %s", name);
+            return type;
+        }
+
+        /**
+         * @return an array of all known map cursor types.
+         * @deprecated use {@link Registry#iterator()}.
+         */
+        @NotNull
+        @Deprecated(since = "1.21")
+        static Type[] values() {
+            return Lists.newArrayList(Registry.MAP_DECORATION_TYPE).toArray(new Type[0]);
         }
     }
 

@@ -3493,10 +3493,10 @@ index 67b212d9395335f59b6f33741aac7a57c823c966..ca232ba24a66d234155fbb706c5b30c6
      }
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-index 854e0eb25b03cfe2979bc10223219c5b45691bd9..efeafa952f1d4c616f1cb26c005812d769414931 100644
+index 1c44050735430f7d9b41a95c64c57fc924b0a7bc..3ff11480dc53e64ba2c1b0a513604c4823c465c8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-@@ -66,7 +66,9 @@ public class Commodore {
+@@ -76,7 +76,9 @@ public class Commodore {
      private static final Map<String, String> RENAMES = Map.of(
              "org/bukkit/entity/TextDisplay$TextAligment", "org/bukkit/entity/TextDisplay$TextAlignment", // SPIGOT-7335
              "org/spigotmc/event/entity/EntityMountEvent", "org/bukkit/event/entity/EntityMountEvent",
@@ -3506,4 +3506,4 @@ index 854e0eb25b03cfe2979bc10223219c5b45691bd9..efeafa952f1d4c616f1cb26c005812d7
 +            "org/bukkit/block/data/type/Jigsaw$Orientation", "org/bukkit/block/Orientation" // Paper
      );
  
-     private static final Set<String> CLASS_TO_INTERFACE = Set.of(
+     private static final Map<String, String> CLASS_TO_INTERFACE = Map.of(
