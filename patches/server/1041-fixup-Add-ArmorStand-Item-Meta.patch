@@ -5,7 +5,7 @@ Subject: [PATCH] fixup! Add ArmorStand Item Meta
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
-index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..47bd58e0785675c5278f0f67292b9253122205f8 100644
+index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..227a5d994345b951b7ec1f78a32b32ec8772b6a7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaArmorStand.java
 @@ -15,17 +15,12 @@ public class CraftMetaArmorStand extends CraftMetaItem implements com.destroysto
@@ -141,7 +141,7 @@ index 53df7e876c9f3e67aa2326fa1a5ce5e90ab7efd6..47bd58e0785675c5278f0f67292b9253
  
      boolean isArmorStandEmpty() {
 -        return !(this.invisible != null || this.noBasePlate != null || this.showArms != null || this.small != null || this.marker != null || this.entityTag != null); // Paper
-+        return entityTag.isEmpty();
++        return entityTag == null || entityTag.isEmpty();
      }
  
      @Override
