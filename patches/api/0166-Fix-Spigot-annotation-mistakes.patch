@@ -1080,7 +1080,7 @@ index f4efb2190ae4b1fa1823d5c97ad518c6d34f0a1a..3d6c0ecc70a748b8508b55513f9d5fa6
          super(theBlock);
          this.result = result;
 diff --git a/src/main/java/org/bukkit/event/enchantment/PrepareItemEnchantEvent.java b/src/main/java/org/bukkit/event/enchantment/PrepareItemEnchantEvent.java
-index 7ae338bcecff2ce25939035181457ced505b3a49..031fb64d7d3aa1685ffe6d7da92b9588f579b2aa 100644
+index 7ae338bcecff2ce25939035181457ced505b3a49..27564727edbd9f093e3a021ce6f30e1146a8ddbb 100644
 --- a/src/main/java/org/bukkit/event/enchantment/PrepareItemEnchantEvent.java
 +++ b/src/main/java/org/bukkit/event/enchantment/PrepareItemEnchantEvent.java
 @@ -23,7 +23,7 @@ public class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
@@ -1088,7 +1088,7 @@ index 7ae338bcecff2ce25939035181457ced505b3a49..031fb64d7d3aa1685ffe6d7da92b9588
      private final Player enchanter;
  
 -    public PrepareItemEnchantEvent(@NotNull final Player enchanter, @NotNull EnchantmentView view, @NotNull final Block table, @NotNull final ItemStack item, @NotNull final EnchantmentOffer[] offers, final int bonus) {
-+    public PrepareItemEnchantEvent(@NotNull final Player enchanter, @NotNull EnchantmnetView view, @NotNull final Block table, @NotNull final ItemStack item, @org.jetbrains.annotations.Nullable final EnchantmentOffer @NotNull [] offers, final int bonus) { // Paper - offers can contain null values
++    public PrepareItemEnchantEvent(@NotNull final Player enchanter, @NotNull EnchantmentView view, @NotNull final Block table, @NotNull final ItemStack item, @org.jetbrains.annotations.Nullable final EnchantmentOffer @NotNull [] offers, final int bonus) { // Paper - offers can contain null values
          super(view);
          this.enchanter = enchanter;
          this.table = table;

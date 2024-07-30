@@ -5,10 +5,10 @@ Subject: [PATCH] improve checking handled tags in itemmeta
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-index a4c4ba0d02f9a072236ce86c1e98e2c60b059cb8..858e3208214bf01b6fe1c5cd867e6b77e57cfb2c 100644
+index a4c4ba0d02f9a072236ce86c1e98e2c60b059cb8..0930d827e96e0b41296d7723238e6735106fd3d5 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-@@ -39,80 +39,80 @@ import org.bukkit.inventory.meta.TropicalFishBucketMeta;
+@@ -39,120 +39,120 @@ import org.bukkit.inventory.meta.TropicalFishBucketMeta;
  
  public final class CraftItemMetas {
  
@@ -108,7 +108,8 @@ index a4c4ba0d02f9a072236ce86c1e98e2c60b059cb8..858e3208214bf01b6fe1c5cd867e6b77
              (type, meta) -> new CraftMetaBlockState(meta, type.asMaterial()));
  
      private static final ItemMetaData<ShieldMeta> SHIELD_META_DATA = new ItemMetaData<>(ShieldMeta.class,
-@@ -120,39 +120,39 @@ public final class CraftItemMetas {
+-            item -> new CraftMetaShield(item.getComponentsPatch()),
++            (item, extras) -> new CraftMetaShield(item.getComponentsPatch(), extras),
              (type, meta) -> new CraftMetaShield(meta));
  
      private static final ItemMetaData<TropicalFishBucketMeta> TROPICAL_FISH_BUCKET_META_DATA = new ItemMetaData<>(TropicalFishBucketMeta.class,
@@ -712,6 +713,21 @@ index d1cb8d520b6d7b0981d70412def71e7aab04560a..7f9182809f6e67ff571db0f365bc7e05
          getOrEmpty(tag, CraftMetaPotion.POTION_CONTENTS).ifPresent((potionContents) -> {
              potionContents.potion().ifPresent((potion) -> {
                  this.type = CraftPotionType.minecraftHolderToBukkit(potion);
+diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+index c8eec04685456d89cb41466cddcc3975d0ceeb29..55551b3dbf6a80efde37ad85e89f18a1232d2261 100644
+--- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
++++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+@@ -41,8 +41,8 @@ public class CraftMetaShield extends CraftMetaItem implements ShieldMeta, BlockS
+         }
+     }
+ 
+-    CraftMetaShield(DataComponentPatch tag) {
+-        super(tag);
++    CraftMetaShield(DataComponentPatch tag, java.util.Set<net.minecraft.core.component.DataComponentType<?>> extraHandledDcts) { // Paper - improve checking handled tags in item meta
++        super(tag, extraHandledDcts); // Paper - improve checking handled tags in item meta
+ 
+         getOrEmpty(tag, CraftMetaShield.BASE_COLOR).ifPresent((color) -> {
+             this.banner = CraftMetaShield.getBlockState(DyeColor.getByWoolData((byte) color.getId()));
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java
 index d6e161374e0235031128a6ee86d1ffa875ea48aa..ab860f1179fa2618c8fbc30ac5f48ff78b8abb60 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java

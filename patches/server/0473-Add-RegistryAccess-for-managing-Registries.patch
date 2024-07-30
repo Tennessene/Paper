@@ -1162,7 +1162,7 @@ index bfbd80b60ac5df500d03c80de57e38aa7548dd46..cce9e2226ef554c10e1df1dbaa179165
              when(instance.getTag(any(), any(), any())).then(mock -> {
                  String registry = mock.getArgument(0);
 diff --git a/src/test/java/org/bukkit/support/provider/RegistriesArgumentProvider.java b/src/test/java/org/bukkit/support/provider/RegistriesArgumentProvider.java
-index 9d6c3d91b505a683b353577bf39f869173243459..4680276476c10c05b12c2b7e16f200192bf3b443 100644
+index 9d6c3d91b505a683b353577bf39f869173243459..c1f886c906a9f9313d97a223f719095fa2624c57 100644
 --- a/src/test/java/org/bukkit/support/provider/RegistriesArgumentProvider.java
 +++ b/src/test/java/org/bukkit/support/provider/RegistriesArgumentProvider.java
 @@ -1,6 +1,7 @@
@@ -1217,7 +1217,7 @@ index 9d6c3d91b505a683b353577bf39f869173243459..4680276476c10c05b12c2b7e16f20019
 +        register(RegistryKey.FROG_VARIANT, Frog.Variant.class, Registries.FROG_VARIANT, CraftFrog.CraftVariant.class, FrogVariant.class);
 +        register(RegistryKey.CAT_VARIANT, Cat.Type.class, Registries.CAT_VARIANT, CraftCat.CraftType.class, CatVariant.class);
 +        register(RegistryKey.MAP_DECORATION_TYPE, MapCursor.Type.class, Registries.MAP_DECORATION_TYPE, CraftMapCursor.CraftType.class, MapDecorationType.class);
-+        register(RegistryKey.PARTICLE_TYPE, PatternType.class, Registries.BANNER_PATTERN, CraftPatternType.class, BannerPattern.class);
++        register(RegistryKey.BANNER_PATTERN, PatternType.class, Registries.BANNER_PATTERN, CraftPatternType.class, BannerPattern.class);
      }
  
 -    private static void register(Class bukkit, ResourceKey registry, Class craft, Class minecraft) {
