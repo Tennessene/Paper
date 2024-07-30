@@ -5,10 +5,10 @@ Subject: [PATCH] Add BlockStateMeta#clearBlockState
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-index 80ace77a9b11d63a1b2271c868c59711f5d2f89d..4faada5f974214f3054dc1bec9c79e2600c8df48 100644
+index be0022cb259656401675bb455b89b088cdbf8946..70e571253df33c9e07fd358d0420d043df65f86c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-@@ -195,6 +195,13 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -196,6 +196,13 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
          return this.blockEntityTag != null;
      }
  

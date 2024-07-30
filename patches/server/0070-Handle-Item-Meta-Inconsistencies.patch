@@ -149,7 +149,7 @@ index 17fa2d3db112762bcb8b941b69b8ddcc53f47224..6c76aeddb34239a5acc204a17b2aa2d8
  
      static Map<Enchantment, Integer> getEnchantments(net.minecraft.world.item.ItemStack item) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 46e1fabf85cc0d92f79a7adf24e5724dc1dc08a9..69be26f8f47854f39cfed0559d944ef4f983c0f3 100644
+index 96d99bf923e7dbb9aef97510c9b6152edf4c8763..4a05989264472d20cbc604d7295ff32cee7e6957 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 @@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
@@ -239,7 +239,7 @@ index 46e1fabf85cc0d92f79a7adf24e5724dc1dc08a9..69be26f8f47854f39cfed0559d944ef4
              }
              if (this.hasAttributeModifiers()) {
                  clone.attributeModifiers = LinkedHashMultimap.create(this.attributeModifiers);
-@@ -2028,4 +2030,22 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -2029,4 +2031,22 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
          return (result != null) ? result : Optional.empty();
      }
