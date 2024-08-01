@@ -1639,10 +1639,10 @@ index 476fe14faa39f02444cab8ad95d4401033dc6938..2c54660dc1fbc7c1232096797a23cae1
  
      /**
 diff --git a/src/main/java/org/bukkit/inventory/ShapedRecipe.java b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
-index 1012656948e9bf2aa18867cc2409616f3f21501e..aa3b3070126f1c492f004ec7599eeb379b58f207 100644
+index fa03cf187db29896f5af046b311f67881aee0ff4..295d82dd73b600e9436d2bbec0e11dbeaf78bbf4 100644
 --- a/src/main/java/org/bukkit/inventory/ShapedRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
-@@ -106,8 +106,10 @@ public class ShapedRecipe extends CraftingRecipe {
+@@ -107,8 +107,10 @@ public class ShapedRecipe extends CraftingRecipe {
       * @return The changed recipe, so you can chain calls.
       * @throws IllegalArgumentException if the {@code key} is a space character
       * @throws IllegalArgumentException if the {@code key} does not appear in the shape.
@@ -1653,7 +1653,7 @@ index 1012656948e9bf2aa18867cc2409616f3f21501e..aa3b3070126f1c492f004ec7599eeb37
      public ShapedRecipe setIngredient(char key, @NotNull MaterialData ingredient) {
          return setIngredient(key, ingredient.getItemType(), ingredient.getData());
      }
-@@ -190,7 +192,9 @@ public class ShapedRecipe extends CraftingRecipe {
+@@ -191,7 +193,9 @@ public class ShapedRecipe extends CraftingRecipe {
       * Get a copy of the ingredients map.
       *
       * @return The mapping of character to ingredients.
@@ -1664,10 +1664,10 @@ index 1012656948e9bf2aa18867cc2409616f3f21501e..aa3b3070126f1c492f004ec7599eeb37
      public Map<Character, ItemStack> getIngredientMap() {
          HashMap<Character, ItemStack> result = new HashMap<Character, ItemStack>();
 diff --git a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-index b8ac602cd2718d615ec243ce648951a1a46c26ec..beb798482479c58a8628c314b510ab6349576ce8 100644
+index 63a233cc819d8d6995d14b9dbfabc14d89af54cc..3bf5064cd6ceb05ea98b18993da46c67be140115 100644
 --- a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-@@ -43,8 +43,10 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -44,8 +44,10 @@ public class ShapelessRecipe extends CraftingRecipe {
       *
       * @param ingredient The ingredient to add.
       * @return The changed recipe, so you can chain calls.
@@ -1678,7 +1678,7 @@ index b8ac602cd2718d615ec243ce648951a1a46c26ec..beb798482479c58a8628c314b510ab63
      public ShapelessRecipe addIngredient(@NotNull MaterialData ingredient) {
          return addIngredient(1, ingredient);
      }
-@@ -80,8 +82,10 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -81,8 +83,10 @@ public class ShapelessRecipe extends CraftingRecipe {
       * @param count How many to add (can't be more than 9!)
       * @param ingredient The ingredient to add.
       * @return The changed recipe, so you can chain calls.
@@ -1689,7 +1689,7 @@ index b8ac602cd2718d615ec243ce648951a1a46c26ec..beb798482479c58a8628c314b510ab63
      public ShapelessRecipe addIngredient(int count, @NotNull MaterialData ingredient) {
          return addIngredient(count, ingredient.getItemType(), ingredient.getData());
      }
-@@ -198,8 +202,10 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -199,8 +203,10 @@ public class ShapelessRecipe extends CraftingRecipe {
       *
       * @param ingredient The ingredient to remove
       * @return The changed recipe.
@@ -1700,7 +1700,7 @@ index b8ac602cd2718d615ec243ce648951a1a46c26ec..beb798482479c58a8628c314b510ab63
      public ShapelessRecipe removeIngredient(@NotNull MaterialData ingredient) {
          return removeIngredient(ingredient.getItemType(), ingredient.getData());
      }
-@@ -226,8 +232,10 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -227,8 +233,10 @@ public class ShapelessRecipe extends CraftingRecipe {
       * @param count The number of copies to remove.
       * @param ingredient The ingredient to remove.
       * @return The changed recipe.
@@ -1711,7 +1711,7 @@ index b8ac602cd2718d615ec243ce648951a1a46c26ec..beb798482479c58a8628c314b510ab63
      public ShapelessRecipe removeIngredient(int count, @NotNull MaterialData ingredient) {
          return removeIngredient(count, ingredient.getItemType(), ingredient.getData());
      }
-@@ -277,7 +285,9 @@ public class ShapelessRecipe extends CraftingRecipe {
+@@ -278,7 +286,9 @@ public class ShapelessRecipe extends CraftingRecipe {
       * Get the list of ingredients used for this recipe.
       *
       * @return The input list

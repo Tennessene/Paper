@@ -1430,7 +1430,7 @@ index f1918027c3a8735b31566856218611656b56db20..476fe14faa39f02444cab8ad95d44010
       * @return the currently held item
       * @see #getItemInMainHand()
 diff --git a/src/main/java/org/bukkit/inventory/ShapedRecipe.java b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
-index a601bc38e322e5810cf883708541e2d199f09ebb..d89068a37de1dcad0b82dee09cc7829109921a05 100644
+index 16c10d75dd28f6bbe843935e8bc91f2bccbd360a..c414ccf03572d48f5c096516fc60a59bb1e8efd7 100644
 --- a/src/main/java/org/bukkit/inventory/ShapedRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapedRecipe.java
 @@ -24,8 +24,6 @@ public class ShapedRecipe extends CraftingRecipe {
@@ -1442,8 +1442,8 @@ index a601bc38e322e5810cf883708541e2d199f09ebb..d89068a37de1dcad0b82dee09cc78291
       * @see ShapedRecipe#setIngredient(char, RecipeChoice)
       * @deprecated Recipes must have keys. Use {@link #ShapedRecipe(NamespacedKey, ItemStack)}
       * instead.
-@@ -44,8 +42,6 @@ public class ShapedRecipe extends CraftingRecipe {
-      * @param result The item you want the recipe to create.
+@@ -45,8 +43,6 @@ public class ShapedRecipe extends CraftingRecipe {
+      * @exception IllegalArgumentException if the {@code result} is an empty item (AIR)
       * @see ShapedRecipe#shape(String...)
       * @see ShapedRecipe#setIngredient(char, Material)
 -     * @see ShapedRecipe#setIngredient(char, Material, int)
@@ -1452,12 +1452,12 @@ index a601bc38e322e5810cf883708541e2d199f09ebb..d89068a37de1dcad0b82dee09cc78291
       */
      public ShapedRecipe(@NotNull NamespacedKey key, @NotNull ItemStack result) {
 diff --git a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-index 3d50775da447175b2a94ed9056ef36aa1e69c2eb..03839302c94adc3175d0a88065cd230257ffd20d 100644
+index bc924ae23fa10d87537aebbfd126aa44f199b65c..b7f46a048633945dc71e8efec9a7ebeed5832fd7 100644
 --- a/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/ShapelessRecipe.java
-@@ -30,11 +30,8 @@ public class ShapelessRecipe extends CraftingRecipe {
-      * @param key the unique recipe key
+@@ -31,11 +31,8 @@ public class ShapelessRecipe extends CraftingRecipe {
       * @param result The item you want the recipe to create.
+      * @exception IllegalArgumentException if the {@code result} is an empty item (AIR)
       * @see ShapelessRecipe#addIngredient(Material)
 -     * @see ShapelessRecipe#addIngredient(MaterialData)
 -     * @see ShapelessRecipe#addIngredient(Material,int)
@@ -1467,8 +1467,8 @@ index 3d50775da447175b2a94ed9056ef36aa1e69c2eb..03839302c94adc3175d0a88065cd2302
 +     * @see ShapelessRecipe#addIngredient(RecipeChoice)
       */
      public ShapelessRecipe(@NotNull NamespacedKey key, @NotNull ItemStack result) {
-         super(key, result);
-@@ -174,7 +171,7 @@ public class ShapelessRecipe extends CraftingRecipe {
+         super(key, checkResult(result));
+@@ -175,7 +172,7 @@ public class ShapelessRecipe extends CraftingRecipe {
  
      /**
       * Removes multiple instances of an ingredient from the list. If there are

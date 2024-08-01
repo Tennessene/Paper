@@ -17,23 +17,6 @@ index 63cf2b66f51df68aa3f6d98c69368ce454869d64..1bf54b0142fe41b29b21c8b97d3f52bb
                  recipe.setIngredient(c, choice);
              }
  
-diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftComplexRecipe.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftComplexRecipe.java
-index b46d7ff3178f7f971cc1508cad855d9d38f91ed5..977a4a439f6a897d4cf9f69957029596bce79027 100644
---- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftComplexRecipe.java
-+++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftComplexRecipe.java
-@@ -14,7 +14,11 @@ public class CraftComplexRecipe extends CraftingRecipe implements CraftRecipe, C
-     private final CustomRecipe recipe;
- 
-     public CraftComplexRecipe(NamespacedKey key, ItemStack result, CustomRecipe recipe) {
--        super(key, result);
-+        // Paper start - fix issues with recipe api - use protected constructor to skip api constructor check for empty result.
-+        super();
-+        super.key = key;
-+        super.output = result;
-+        // Paper end - fix issues with recipe api - use protected constructor to skip api constructor check for empty result.
-         this.recipe = recipe;
-     }
- 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftRecipe.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftRecipe.java
 index 6ba29875d78ede4aa7978ff689e588f7fed11528..c76c78bb7757d407102271463e14716a1b012deb 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftRecipe.java
