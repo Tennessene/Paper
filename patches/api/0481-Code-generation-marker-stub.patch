@@ -729,7 +729,7 @@ index 84bba32e80d755f094975b667f1bf2a132087f4f..4fec7b3bbeae7ab0538f3de6e83faa9c
      }
  }
 diff --git a/src/main/java/org/bukkit/entity/Villager.java b/src/main/java/org/bukkit/entity/Villager.java
-index 444744ea6f5921b0ae229995f8b15ea9d980c402..4830835963c36a1a4289520522d4ca67d31d0855 100644
+index 444744ea6f5921b0ae229995f8b15ea9d980c402..9da5d5d758068f957fdf85e4a4aa4363273b7771 100644
 --- a/src/main/java/org/bukkit/entity/Villager.java
 +++ b/src/main/java/org/bukkit/entity/Villager.java
 @@ -171,6 +171,7 @@ public interface Villager extends AbstractVillager {
@@ -748,6 +748,22 @@ index 444744ea6f5921b0ae229995f8b15ea9d980c402..4830835963c36a1a4289520522d4ca67
  
          @NotNull
          private static Type getType(@NotNull String key) {
+@@ -218,6 +220,7 @@ public interface Villager extends AbstractVillager {
+      */
+     interface Profession extends OldEnum<Profession>, Keyed, net.kyori.adventure.translation.Translatable {
+ 
++        // Paper start - Generated/VillagerProfession
+         Profession NONE = getProfession("none");
+         /**
+          * Armorer profession. Wears a black apron. Armorers primarily trade for
+@@ -289,6 +292,7 @@ public interface Villager extends AbstractVillager {
+          * trade for iron and diamond weapons, sometimes enchanted.
+          */
+         Profession WEAPONSMITH = getProfession("weaponsmith");
++        // Paper end - Generated/VillagerProfession
+ 
+         @NotNull
+         private static Profession getProfession(@NotNull String key) {
 diff --git a/src/main/java/org/bukkit/entity/Wolf.java b/src/main/java/org/bukkit/entity/Wolf.java
 index 4b84c04675775e2a606630b00de8afe51665cebc..263e65af2ed3818215802de75034fe503b3d9445 100644
 --- a/src/main/java/org/bukkit/entity/Wolf.java

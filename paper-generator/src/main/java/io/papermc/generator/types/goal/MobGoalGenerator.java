@@ -72,7 +72,7 @@ public class MobGoalGenerator extends SimpleGenerator {
 
         List<GoalKey<Mob>> vanillaGoals = classes.stream()
             .filter(clazz -> !java.lang.reflect.Modifier.isAbstract(clazz.getModifiers()))
-            .filter(clazz -> !clazz.isAnonymousClass() || ClassHelper.getRootClass(clazz) != GoalSelector.class)
+            .filter(clazz -> !clazz.isAnonymousClass() || ClassHelper.getTopLevelClass(clazz) != GoalSelector.class)
             .filter(clazz -> !WrappedGoal.class.equals(clazz)) // TODO - properly fix
             .map(MobGoalNames::getKey)
             .sorted(Comparator.<GoalKey<?>, String>comparing(o -> o.getEntityClass().getSimpleName())

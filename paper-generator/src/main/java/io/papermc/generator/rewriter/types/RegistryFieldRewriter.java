@@ -23,7 +23,6 @@ import net.minecraft.world.flag.FeatureElement;
 import net.minecraft.world.flag.FeatureFlags;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 
 import static io.papermc.typewriter.utils.Formatting.quoted;
@@ -73,6 +72,9 @@ public class RegistryFieldRewriter<T> extends SearchReplaceRewriter {
 
         while (referenceIterator.hasNext()) {
             Holder.Reference<T> reference = referenceIterator.next();
+
+            this.rewriteJavadocs(reference, metadata.indent(), builder);
+
             @Nullable SingleFlagHolder requiredFeature = this.getRequiredFeature(reference);
             if (requiredFeature != null) {
                 Annotations.experimentalAnnotations(builder, metadata, requiredFeature);
@@ -93,6 +95,9 @@ public class RegistryFieldRewriter<T> extends SearchReplaceRewriter {
                 builder.append('\n');
             }
         }
+    }
+
+    protected void rewriteJavadocs(Holder.Reference<T> reference, String indent, StringBuilder builder) {
     }
 
     protected boolean canPrintField(Holder.Reference<T> reference) {

@@ -17,6 +17,7 @@ import io.papermc.generator.rewriter.types.simple.MaterialRewriter;
 import io.papermc.generator.rewriter.types.simple.MemoryKeyRewriter;
 import io.papermc.generator.rewriter.types.simple.PatternTypeRewriter;
 import io.papermc.generator.rewriter.types.simple.StatisticRewriter;
+import io.papermc.generator.rewriter.types.simple.VillagerProfessionRewriter;
 import io.papermc.generator.utils.Formatting;
 import io.papermc.generator.utils.experimental.ExperimentalHelper;
 import io.papermc.generator.utils.experimental.SingleFlagHolder;
@@ -163,6 +164,10 @@ public final class Rewriters {
                 holder("StatisticCustom", new StatisticRewriter.Custom()),
                 holder("StatisticType", new StatisticRewriter.Type())
             ))
+            .register(Villager.class, composite(
+                holder("VillagerType", Villager.Type.class, new RegistryFieldRewriter<>(Registries.VILLAGER_TYPE, "getType")),
+                holder("VillagerProfession", Villager.Profession.class, new VillagerProfessionRewriter())
+            ))
             .register("MapCursorType", MapCursor.Type.class, new RegistryFieldRewriter<>(Registries.MAP_DECORATION_TYPE, "getType") {
                 @Override
                 protected @Nullable SingleFlagHolder getRequiredFeature(Holder.Reference<MapDecorationType> reference) {
@@ -183,7 +188,6 @@ public final class Rewriters {
             .register("WolfVariant", Wolf.Variant.class, new RegistryFieldRewriter<>(Registries.WOLF_VARIANT, "getVariant"))
             .register("CatType", Cat.Type.class, new RegistryFieldRewriter<>(Registries.CAT_VARIANT, "getType"))
             .register("FrogVariant", Frog.Variant.class, new RegistryFieldRewriter<>(Registries.FROG_VARIANT, "getVariant"))
-            .register("VillagerType", Villager.Type.class, new RegistryFieldRewriter<>(Registries.VILLAGER_TYPE, "getType"))
             .register("JukeboxSong", JukeboxSong.class, new JukeboxSongRewriter())
             .register("MemoryKey", MemoryKey.class, new MemoryKeyRewriter())
             .register("ItemType", ItemType.class, new ItemTypeRewriter())

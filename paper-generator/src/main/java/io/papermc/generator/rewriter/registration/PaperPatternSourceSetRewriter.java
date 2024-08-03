@@ -54,7 +54,7 @@ public class PaperPatternSourceSetRewriter extends SourceSetRewriterImpl<Pattern
 
     @Override
     public PatternSourceSetRewriter register(final String pattern, final ClassNamed targetClass, final SearchReplaceRewriter rewriter) {
-        return super.register(SourceFile.of(targetClass.root(), INDENT_UNIT), rewriter.withOptions(getOptions(pattern, targetClass)).customName(pattern));
+        return super.register(SourceFile.of(targetClass.topLevel(), INDENT_UNIT), rewriter.withOptions(getOptions(pattern, targetClass)).customName(pattern));
     }
 
     @Override
