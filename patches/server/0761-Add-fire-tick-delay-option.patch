@@ -5,7 +5,7 @@ Subject: [PATCH] Add fire-tick-delay option
 
 
 diff --git a/src/main/java/net/minecraft/world/level/block/FireBlock.java b/src/main/java/net/minecraft/world/level/block/FireBlock.java
-index ceaa2a7048afc4955d3695af5291e83a79d83c5d..19032ddbd4cc8214fa7327891481edf4f0c48fd5 100644
+index 9db6df5f28be559a324ead2fcfbe189eac076e2e..25f85400be963e7a97f043127137d1bf2ae6ba2c 100644
 --- a/src/main/java/net/minecraft/world/level/block/FireBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/FireBlock.java
 @@ -171,7 +171,7 @@ public class FireBlock extends BaseFireBlock {
@@ -17,11 +17,11 @@ index ceaa2a7048afc4955d3695af5291e83a79d83c5d..19032ddbd4cc8214fa7327891481edf4
          if (world.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
              if (!state.canSurvive(world, pos)) {
                  this.fireExtinguished(world, pos); // CraftBukkit - invalid place location
-@@ -370,11 +370,11 @@ public class FireBlock extends BaseFireBlock {
-     @Override
-     protected void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
-         super.onPlace(state, world, pos, oldState, notify);
--        world.scheduleTick(pos, (Block) this, FireBlock.getFireTickDelay(world.random));
+@@ -372,11 +372,11 @@ public class FireBlock extends BaseFireBlock {
+     protected void onPlace(BlockState iblockdata, Level world, BlockPos blockposition, BlockState iblockdata1, boolean flag, UseOnContext context) {
+         super.onPlace(iblockdata, world, blockposition, iblockdata1, flag, context);
+         // CraftBukkit end
+-        world.scheduleTick(blockposition, (Block) this, FireBlock.getFireTickDelay(world.random));
 +        world.scheduleTick(pos, (Block) this, FireBlock.getFireTickDelay(world)); // Paper - Add fire-tick-delay option
      }
  
