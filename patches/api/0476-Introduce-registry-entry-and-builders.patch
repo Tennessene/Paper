@@ -480,7 +480,7 @@ index 6c9689baca1763e2ef79495d38618d587e792434..4583092c2d1ffe95be2831c5d5f0e904
 +    // Paper end
  }
 diff --git a/src/main/java/org/bukkit/inventory/ItemType.java b/src/main/java/org/bukkit/inventory/ItemType.java
-index 94587a97fcea81a43b160b01d2c81cef2b7f4413..6bc1853ada3ea38bc36cb31fbb5ce246347fe5d4 100644
+index a6d1dde422de98f178c0c9add99e01203a35e5cb..885a37af013b7934768fb4a742b0a69e0b6f034c 100644
 --- a/src/main/java/org/bukkit/inventory/ItemType.java
 +++ b/src/main/java/org/bukkit/inventory/ItemType.java
 @@ -46,7 +46,7 @@ import org.jetbrains.annotations.Nullable;

@@ -5,7 +5,7 @@ Subject: [PATCH] String based Action Bar API
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index c399264ccffe646be10b3f13ebe0c0103d97f62c..d471e9370fdbcbce5357e52e8ea2a10c196cd33d 100644
+index af57de9e02fc9c96b1d4614b9bacdc5dd29117d5..ccbfdfb74ccfc9d31e051e0746aa8a4ecdc4319f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 @@ -388,6 +388,28 @@ public class CraftPlayer extends CraftHumanEntity implements Player {

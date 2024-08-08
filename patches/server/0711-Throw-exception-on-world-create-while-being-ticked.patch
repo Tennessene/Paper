@@ -45,7 +45,7 @@ index 8142e4a238066404f3d1685f9cee1a2b91cdd371..acdba56f025fe729398c5549175baad8
          this.profiler.popPush("connection");
          MinecraftTimings.connectionTimer.startTiming(); // Spigot // Paper
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index c5f736ad83c0296c3291ad71278598eb00db436c..92f3435fa4f8d37cc75939426a567dab4fa32707 100644
+index 45501e907ff6c6dc71142ceb24f198a4ace17fc0..1e6ee43fbb43a772673f2c37e05eeff6c4d56037 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -916,6 +916,11 @@ public final class CraftServer implements Server {

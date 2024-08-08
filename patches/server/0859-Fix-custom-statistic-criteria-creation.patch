@@ -5,7 +5,7 @@ Subject: [PATCH] Fix custom statistic criteria creation
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index 24cb9d97bb04a4fe60c46055520ec324fbf6fa3b..398068e8ffa77ac7199baf7aaab5b60c9dc639f5 100644
+index 39066b1d8df7f784e4c90b5fd47505ef65db307c..2d5cb690c332732d1d2a9e78918cd5e8595b37e9 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -593,6 +593,14 @@ public final class CraftMagicNumbers implements UnsafeValues {

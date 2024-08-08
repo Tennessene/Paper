@@ -5,7 +5,7 @@ Subject: [PATCH] Add server-name parameter
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 14f63c179428bee61d3b931ea309f4c94b89a6cc..75a3c7ed5500f0451c9c1efdfc3cb809445c8acf 100644
+index 2097be352dc585b805dc73194cec095627f311bc..837db57c19df3d5c986a52edf3d9d8105cc87cde 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -168,6 +168,14 @@ public class Main {

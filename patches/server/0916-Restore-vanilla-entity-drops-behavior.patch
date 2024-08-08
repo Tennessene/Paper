@@ -152,10 +152,10 @@ index 5bcb9a53ebebeef4bd6ec2458df4b63002ebd804..2f398750bfee5758ad8b1367b6fc1436
              }
          }
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 6ca59ba6a713e452d146182d143b99b07696af8b..be1fa84dfdec0e31f9e2ca47ad3719dd6678b49c 100644
+index e54b93b366ce42454179a23acdd0353ace0d486e..56c25507ebe2d7e48b18ade462bfcca94bd67e74 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -969,18 +969,24 @@ public class CraftEventFactory {
+@@ -973,18 +973,24 @@ public class CraftEventFactory {
      }
  
      public static EntityDeathEvent callEntityDeathEvent(net.minecraft.world.entity.LivingEntity victim, DamageSource damageSource) {
@@ -184,7 +184,7 @@ index 6ca59ba6a713e452d146182d143b99b07696af8b..be1fa84dfdec0e31f9e2ca47ad3719dd
          populateFields(victim, event); // Paper - make cancellable
          CraftWorld world = (CraftWorld) entity.getWorld();
          Bukkit.getServer().getPluginManager().callEvent(event);
-@@ -994,20 +1000,24 @@ public class CraftEventFactory {
+@@ -998,20 +1004,24 @@ public class CraftEventFactory {
          victim.expToDrop = event.getDroppedExp();
          lootCheck.run(); // Paper - advancement triggers before destroying items
  
@@ -213,7 +213,7 @@ index 6ca59ba6a713e452d146182d143b99b07696af8b..be1fa84dfdec0e31f9e2ca47ad3719dd
          event.setKeepInventory(keepInventory);
          event.setKeepLevel(victim.keepLevel); // SPIGOT-2222: pre-set keepLevel
          populateFields(victim, event); // Paper - make cancellable
-@@ -1025,16 +1035,14 @@ public class CraftEventFactory {
+@@ -1029,16 +1039,14 @@ public class CraftEventFactory {
          victim.expToDrop = event.getDroppedExp();
          victim.newExp = event.getNewExp();
  

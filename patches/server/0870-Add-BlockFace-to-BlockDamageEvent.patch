@@ -18,10 +18,10 @@ index c680f081ba548f84f07a968a46811090c53e57e3..d839f8df658c894f144ba4637d290ffb
                  if (blockEvent.isCancelled()) {
                      // Let the client know the block still exists
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 35afad4e995f7e94d7a4541157b237c73d1b9635..9d7bcd7a99cfda0776d267bada384304558fa6fe 100644
+index 04ff9dfb7978e82d9d8ae96c92b598bf63f542f4..fcd4a6d5fff3f30c84688081088e577fa6dd7c5b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -655,13 +655,13 @@ public class CraftEventFactory {
+@@ -659,13 +659,13 @@ public class CraftEventFactory {
      /**
       * BlockDamageEvent
       */

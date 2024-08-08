@@ -5,7 +5,7 @@ Subject: [PATCH] Add PlayerLecternPageChangeEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/inventory/LecternMenu.java b/src/main/java/net/minecraft/world/inventory/LecternMenu.java
-index 19858ecd7cfaaf0fb09552292bf573bb02b3a6ec..ccba06c419732c63f6b255f5f8c1f7a95f3ecbee 100644
+index 1b3119751617366cf753008d38be566cd7ee2453..df4ae5d37b9aa5b8fb26c5773a47a5a85f831982 100644
 --- a/src/main/java/net/minecraft/world/inventory/LecternMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/LecternMenu.java
 @@ -64,6 +64,7 @@ public class LecternMenu extends AbstractContainerMenu {

@@ -5,7 +5,7 @@ Subject: [PATCH] Expand PlayerItemDamageEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 823146a66de8ce13e6dc6faf2fd135480bd51c3a..d825c2e3808e44db9935dab4e7b528146c6d83c2 100644
+index eeba6d3aeb50bc7ee6dcfe7cc18eee2487d47357..598507684aed7978fa2e9bae0d959c7d0f9e53d6 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -650,10 +650,11 @@ public final class ItemStack implements DataComponentHolder {

@@ -6,7 +6,7 @@ Subject: [PATCH] Optimize Level.hasChunkAt(BlockPosition)Z
 Reduce method invocations for World.isLoaded(BlockPosition)Z
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 008be3aad044d20be14da3a9e96933d265104587..03b0720c6ebf1a876d56d18a941e0a06ed26dbf0 100644
+index 59992bea10218e48397fa781f895d36e0e1df46e..1643a0f11650e9fdaf36056fe34602d431c389d2 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -342,6 +342,11 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

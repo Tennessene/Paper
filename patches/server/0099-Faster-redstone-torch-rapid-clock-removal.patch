@@ -6,7 +6,7 @@ Subject: [PATCH] Faster redstone torch rapid clock removal
 Only resize the the redstone torch list once, since resizing arrays / lists is costly
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 622ecc1aeb9140d5c0d181fa472d123c42e5c5f4..4abb586f964e342425c7cf0384ab8bf8cdedaea3 100644
+index 024da1029baecae639d7c05b5f7c30dbaa67b006..240db0aae0b0e306c90bcc4a537c9afcb290acb3 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -169,6 +169,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

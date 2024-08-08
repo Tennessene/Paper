@@ -164,10 +164,10 @@ index 8ca86852319d7463f60832bc98b825b0b4325995..62ada73302c6b3ce3fb2dcc8c31a1d9c
  
      private final DisplayInfo handle;
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-index 9fffb9c9161caad8eb62a99b37d0f31862b568a5..72eca2c6e2107f695ad6c1d85e02dae1890ea410 100644
+index 0cb2b616e0fa060b7aae6c47502f75ee7647e917..17d6a4cdd16d34f83e0752c3bdaee08288425a07 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-@@ -434,6 +434,11 @@ public class Commodore {
+@@ -435,6 +435,11 @@ public class Commodore {
                              super.visitMethodInsn(opcode, owner, name, "()Lcom/destroystokyo/paper/profile/PlayerProfile;", itf);
                              return;
                          }

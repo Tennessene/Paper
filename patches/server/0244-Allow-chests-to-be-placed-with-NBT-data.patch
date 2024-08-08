@@ -5,7 +5,7 @@ Subject: [PATCH] Allow chests to be placed with NBT data
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index f53ce5f063d3b7b8d3f6a3bc1165d1788c112e6d..cc8825acea0d84b36194313656a6f70d8c049072 100644
+index b0d0e08e81e3b87e5d4faf62e9afe9606c254115..2ee949e1b0015c62499c557d5e359df4b9de6027 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -490,6 +490,7 @@ public final class ItemStack implements DataComponentHolder {

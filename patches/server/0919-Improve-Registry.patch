@@ -5,7 +5,7 @@ Subject: [PATCH] Improve Registry
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
-index 002449e66f83a419afa8357d2e7192670eaf869e..b6c7522ff8522cdadf3b291a9c2ac87c60b85d2a 100644
+index 21d104d07e86c7961b8de56403c9d4004a79ba27..96e7a493eeef865eb52e92aeec993b67d8d4a4fa 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
 @@ -151,6 +151,7 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {

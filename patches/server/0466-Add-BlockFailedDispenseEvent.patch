@@ -20,7 +20,7 @@ index c7256ffbe57c594556ee85134c9ab166f8c0e0c7..94bcbaf7daf7dfe566f508d1170a4339
                  ItemStack itemstack = tileentitydispenser.getItem(i);
                  DispenseItemBehavior idispensebehavior = this.getDispenseMethod(world, itemstack);
 diff --git a/src/main/java/net/minecraft/world/level/block/DropperBlock.java b/src/main/java/net/minecraft/world/level/block/DropperBlock.java
-index a1599eae0d8e9f0298fc6996ad03b0d6ba78f04f..083ddfb8fffa04dad6eeca2274f290a08e62b5eb 100644
+index a08e8571f3a83afc80c2f1758a9029cd28ed6947..91b514967405115f22edf4255775361a672e5c2f 100644
 --- a/src/main/java/net/minecraft/world/level/block/DropperBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/DropperBlock.java
 @@ -60,6 +60,7 @@ public class DropperBlock extends DispenserBlock {
@@ -32,10 +32,10 @@ index a1599eae0d8e9f0298fc6996ad03b0d6ba78f04f..083ddfb8fffa04dad6eeca2274f290a0
              } else {
                  ItemStack itemstack = tileentitydispenser.getItem(i);
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 21c8dcf66847c83f38b57a592cf3b58a68a5657f..19ca8953facd69a5720652c3bcf1e1e3be34a3a3 100644
+index 43bfdd928548022503af8fbab9f61a0cd843baae..82cba73ba0d0d34716c2849c41676c26a6f53048 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -2098,4 +2098,12 @@ public class CraftEventFactory {
+@@ -2112,4 +2112,12 @@ public class CraftEventFactory {
          return org.bukkit.craftbukkit.inventory.CraftItemStack.asNMSCopy(event.getPotion());
      }
      // Paper end - WitchReadyPotionEvent

@@ -317,10 +317,10 @@ index dc6230458e09f7555eee7f6a567ff60ad454666b..9d50b9ac8084f3db1844cc7ad1ce9153
      public boolean readyForShearing() {
          return !this.isSheared() && this.isAlive();
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index be1fa84dfdec0e31f9e2ca47ad3719dd6678b49c..d7bf00745a9016d0fe0c1d39ffaaac44276251d4 100644
+index 56c25507ebe2d7e48b18ade462bfcca94bd67e74..55d20ca20003fb0ee62a9730d31d1a741951aa3d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1676,20 +1676,20 @@ public class CraftEventFactory {
+@@ -1690,20 +1690,20 @@ public class CraftEventFactory {
          player.level().getCraftServer().getPluginManager().callEvent(event);
      }
  

@@ -10,7 +10,7 @@ In general, look at making this logic more robust (i.e properly handling
 cases where a captured entry is overriden) - but for now this will do.
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 5a3a89c568d42a2adbc2b6e2631fd4b70e54f0bf..cfd5d3e50197b38d0ffef6debbb7f5b4b208382a 100644
+index 60b04a16c6cb0a7109bda5c16e23c1d56ab7afad..144d243e0d6ba3ae3f0b0bf457fa516e2b4f416f 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -152,7 +152,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

@@ -7,10 +7,10 @@ Subject: [PATCH] Mitigate effects of WorldCreator#keepSpawnLoaded ret type
 TODO: Remove in 1.21?
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-index b67dfb358a9c1ae26793557ca2151357db4b1691..a28bd14454a599014f24ed21210a8a185ac624db 100644
+index 157fbe09ab22f3218d9d3f72e8c0a5a3d727eaeb..cae5c865388aca8041233ca52b25ecf68cd37494 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Commodore.java
-@@ -439,6 +439,12 @@ public class Commodore {
+@@ -440,6 +440,12 @@ public class Commodore {
                              super.visitMethodInsn(Opcodes.INVOKEVIRTUAL, runtimeCbPkgPrefix() + "advancement/CraftAdvancement", "getDisplay0", desc, false);
                              return;
                          }

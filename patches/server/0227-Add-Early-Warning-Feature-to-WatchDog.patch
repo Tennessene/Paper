@@ -33,7 +33,7 @@ index c466ec011d059b9960606ef2ee51ea3a3a65f8d0..baf93b5d5883d0a5c360f1a475949804
          com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Paper - start metrics
          com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // Paper - load version history now
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 745970d9f07ed7ca98a653bfff1b861dc4aaa177..274d7d7f36ce2eb38d2f630ca48b6aa4f791b0e3 100644
+index 2fa82336da744b6617e55c7d8303f6d769ccefef..a4e969a82eabc5ffdb776d1574f5b003fc19b177 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -962,6 +962,7 @@ public final class CraftServer implements Server {

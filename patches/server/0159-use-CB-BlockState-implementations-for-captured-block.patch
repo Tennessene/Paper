@@ -18,7 +18,7 @@ the blockstate that will be valid for restoration, as opposed to dropping
 information on restoration when the event is cancelled.
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index ab511f4c056f07aa79aab7b662073bb8db4b1526..27e2718124aad69546c1d9adb9c8e69fa4a43ca7 100644
+index 99d5271c018de1e52b6380f0b94e491ce36db61b..6944c0b0cfcde9fa4dd78742aee3e3b87d679abf 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -150,7 +150,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

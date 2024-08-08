@@ -5,7 +5,7 @@ Subject: [PATCH] Call BlockRedstoneEvents for lecterns
 
 
 diff --git a/src/main/java/net/minecraft/world/level/block/LecternBlock.java b/src/main/java/net/minecraft/world/level/block/LecternBlock.java
-index 5ff1e755301336a4e6ec6757510d0c595eacd7a6..f420989056c5c86c94333361f1733fd4b7488283 100644
+index 751ff3d51f8ae57f847c3acf7a7cd663a6ae1c68..0c52e1f8bc233bb66e53f4c69e1d8757382bbe81 100644
 --- a/src/main/java/net/minecraft/world/level/block/LecternBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/LecternBlock.java
 @@ -179,6 +179,16 @@ public class LecternBlock extends BaseEntityBlock {

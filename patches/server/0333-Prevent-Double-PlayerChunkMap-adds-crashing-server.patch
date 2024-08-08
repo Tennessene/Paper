@@ -7,7 +7,7 @@ Suspected case would be around the technique used in .stopRiding
 Stack will identify any causer of this and warn instead of crashing.
 
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index 6159ab8831a233c21aad48c64ef76b06c1955bb0..ee3a5b2f2f1591f68bbacea01b8eafed65c29356 100644
+index ee54706b36bd227edacea2a1b6099009bd652039..8206ec366b429858d9582e437781191e5aa0fa02 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
 @@ -1241,6 +1241,13 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider

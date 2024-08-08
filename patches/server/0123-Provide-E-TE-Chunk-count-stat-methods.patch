@@ -7,7 +7,7 @@ Provides counts without the ineffeciency of using .getEntities().size()
 which creates copy of the collections.
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 03b0720c6ebf1a876d56d18a941e0a06ed26dbf0..4fcbea7b8b12be10157da0c1f35c06e47c0334ad 100644
+index 1643a0f11650e9fdaf36056fe34602d431c389d2..32f2516d1a1001d6a5c3f1f0fe0ffba21a9436dd 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -114,7 +114,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

@@ -49,7 +49,7 @@ index acdba56f025fe729398c5549175baad8e6818f62..3aba668f9a34cabc26063c61660ab22f
              }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index b9b93a4e20eed028b76eab4dcb9610ae05f22faf..1acc0a579804dee7bb3d0f755c24240413ed7540 100644
+index 73225bc20d7aae0ad2a62b3500e76a8f460b5aad..171da360955017a0a2670b960c7c9431099e5439 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -19,6 +19,12 @@ public class Main {

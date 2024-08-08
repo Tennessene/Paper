@@ -121,10 +121,10 @@ index 3c0af74ed65610b1d5e3b72fdcf28c5a3423f0da..01173fc7177d78588978e087e63efda0
                              flag1 = true;
                          }
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 5c511fe60bf59ca1fe773b8c9c39bc88eebf2752..204c6ef33725eee1c582fdbc4e29caface0f27e9 100644
+index bf8c7e633d05534feb58bae0570db7c2a5453861..c76c09f5d1450652d111aa2d06d82fd52b8095ef 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1583,8 +1583,10 @@ public class CraftEventFactory {
+@@ -1597,8 +1597,10 @@ public class CraftEventFactory {
          Bukkit.getPluginManager().callEvent(new PlayerRecipeBookSettingsChangeEvent(player.getBukkitEntity(), bukkitType, open, filter));
      }
  

@@ -68,10 +68,10 @@ index c083dc8b2a69c3747b250d13f1a28ad22b5e6119..bf52c36f31992a01a7403d8c85151327
      }
  
 diff --git a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 9d6cc0b8dbc451dfff1ddd8e7be32d11434cdb69..87289d8ab94705999c67457a28538e7a5576acc3 100644
+index a8bec3c405732e5863cf717b1fe948d00837bed2..240c250a93289776686d09d7eae17c07d7278da5 100644
 --- a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -1118,6 +1118,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -1119,6 +1119,7 @@ public abstract class BlockBehaviour implements FeatureElement {
  
          public void spawnAfterBreak(ServerLevel world, BlockPos pos, ItemStack tool, boolean dropExperience) {
              this.getBlock().spawnAfterBreak(this.asState(), world, pos, tool, dropExperience);

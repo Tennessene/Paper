@@ -206,7 +206,7 @@ index e0f652117e585882693736de8165ae9c689e1d68..fbe14c327ee9c1ac07893853ca7c699e
          return server.getRegistry(tClass);
      }
 diff --git a/src/main/java/org/bukkit/Registry.java b/src/main/java/org/bukkit/Registry.java
-index 5529e227781cd2411de9c6581a1cb1255ce9bb20..f99e68f160deba42e2833fa0f81df4c17bf68ec7 100644
+index e9edc8c17cbd29cfdad31df13acb15bab2304735..987cde111d27638eb89105d2615a4da503de174b 100644
 --- a/src/main/java/org/bukkit/Registry.java
 +++ b/src/main/java/org/bukkit/Registry.java
 @@ -102,7 +102,7 @@ public interface Registry<T extends Keyed> extends Iterable<T> {

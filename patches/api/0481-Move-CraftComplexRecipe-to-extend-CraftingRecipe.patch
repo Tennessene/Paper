@@ -8,10 +8,10 @@ CraftingRecipe.
 As such, this complex recipe should also be a crafting recipe.
 
 diff --git a/src/main/java/org/bukkit/inventory/CraftingRecipe.java b/src/main/java/org/bukkit/inventory/CraftingRecipe.java
-index 37024b4736dd3897490ca51d08cf07901b01d59f..afa3de9ab78d01c448d450d8afbc7b1e7e62754c 100644
+index 9575e40c7ef3e1d86d10d83b33d9e68f0ed7406f..e8c3afda92d4ae5430d622ea18500985d6cc00f2 100644
 --- a/src/main/java/org/bukkit/inventory/CraftingRecipe.java
 +++ b/src/main/java/org/bukkit/inventory/CraftingRecipe.java
-@@ -11,8 +11,11 @@ import org.jetbrains.annotations.NotNull;
+@@ -12,8 +12,11 @@ import org.jetbrains.annotations.NotNull;
   * Represents a shaped or shapeless crafting recipe.
   */
  public abstract class CraftingRecipe implements Recipe, Keyed {

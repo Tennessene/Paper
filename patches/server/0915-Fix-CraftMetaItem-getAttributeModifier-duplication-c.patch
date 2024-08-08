@@ -5,10 +5,10 @@ Subject: [PATCH] Fix CraftMetaItem#getAttributeModifier duplication check
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 0b87cfbdf039ee5bc017d2b1783c7c4853047952..5a455354561389194b0e61c03f4b2e9285b17a3b 100644
+index 5c76ba7f9ceb285d27e18369172612205be96224..11f55ef2645d50bbc24bd245ffe3ac98180315d8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -1405,7 +1405,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1412,7 +1412,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          Preconditions.checkNotNull(modifier, "AttributeModifier cannot be null");
          this.checkAttributeList();
          for (Map.Entry<Attribute, AttributeModifier> entry : this.attributeModifiers.entries()) {

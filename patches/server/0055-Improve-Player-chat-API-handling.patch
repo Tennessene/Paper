@@ -40,7 +40,7 @@ index 47e1640cafc8087d94d0b88b8b3117591f9f238e..64db7e017b41bffcaac202ee4ecfd7df
          if ( org.spigotmc.SpigotConfig.logCommands ) // Spigot
          this.LOGGER.info(this.player.getScoreboardName() + " issued server command: " + s);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 2a36e562967ec6174efe456e489c50ca10ba47e5..b0371c51645da361b63dea02bf7633ae6191560f 100644
+index 70219981d3b0b2a79997d10f7726d7b0f743e195..b57defed3c8caf8743d19452abb1766b35b6ef9a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -933,7 +933,7 @@ public final class CraftServer implements Server {

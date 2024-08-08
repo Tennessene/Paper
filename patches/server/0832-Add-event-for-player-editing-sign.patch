@@ -5,7 +5,7 @@ Subject: [PATCH] Add event for player editing sign
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 8777e634a69825302da7ed5031a344b80724783e..a6ca820adf6e86f8358967d8d3b2e45cd1135b2c 100644
+index 7cb7443aa60b9a552d8d9b67ddbf8b3e54af24e8..1016541b8f01cdb45ae96fbb777c6c38598fcc35 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -550,7 +550,7 @@ public final class ItemStack implements DataComponentHolder {

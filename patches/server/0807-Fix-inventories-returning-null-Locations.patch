@@ -30,7 +30,7 @@ index c26161784359ea167e11de8aa58eda3b4851059c..6632cf24ebe6d147950a1fdb87666093
      }
  
 diff --git a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
-index 6173c689013ab02c83ca6ff1fde2b1e47f3e7820..1b6fd16d8c6195c6f7b65c7621d5f9bd15c46a75 100644
+index 8b0ebf659f6b219ce2a5d10b0d79f9b89b47c911..a735aeeb59f79154ce797c6e2f5600305f46d217 100644
 --- a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 @@ -52,6 +52,12 @@ public class BeaconMenu extends AbstractContainerMenu {

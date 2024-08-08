@@ -6,11 +6,11 @@ Subject: [PATCH] Add ProjectileCollideEvent
 Deprecated now and replaced with ProjectileHitEvent
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 6ffc5b9eb2fa084c7cf397d944e6fc1d8d770dbb..50a4e657508e21717a61900660d85203d9373e19 100644
+index a83b7f350bf20f944de92df76e112aaa49dc608d..805d9ad1e1c888e1b6822a33b386733e9ddc9f2f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1308,6 +1308,17 @@ public class CraftEventFactory {
-         return CraftItemStack.asNMSCopy(bitem);
+@@ -1322,6 +1322,17 @@ public class CraftEventFactory {
+         return crafterCraftEvent;
      }
  
 +    // Paper start
@@ -27,7 +27,7 @@ index 6ffc5b9eb2fa084c7cf397d944e6fc1d8d770dbb..50a4e657508e21717a61900660d85203
      public static ProjectileLaunchEvent callProjectileLaunchEvent(Entity entity) {
          Projectile bukkitEntity = (Projectile) entity.getBukkitEntity();
          ProjectileLaunchEvent event = new ProjectileLaunchEvent(bukkitEntity);
-@@ -1332,8 +1343,15 @@ public class CraftEventFactory {
+@@ -1346,8 +1357,15 @@ public class CraftEventFactory {
          if (position.getType() == HitResult.Type.ENTITY) {
              hitEntity = ((EntityHitResult) position).getEntity().getBukkitEntity();
          }

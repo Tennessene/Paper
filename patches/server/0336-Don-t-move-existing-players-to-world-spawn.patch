@@ -35,7 +35,7 @@ index 613eefeb44beb35181243b570bad631f15802918..9b6887f40dea57d4b5e2f08d7645b1ed
          this.gameMode.setLevel((ServerLevel) world);
      }
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index f0cc34002e260567322d7acaf803f43a8b92e563..8b0c098c795c5a57fce96ad5d98ac8436024cda9 100644
+index 43a3eab6959af76948d1c5803c523ed23835a85f..0d8a7b00aa681d79ba82c69c4683a5bbb656c9dd 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -226,6 +226,7 @@ public abstract class PlayerList {

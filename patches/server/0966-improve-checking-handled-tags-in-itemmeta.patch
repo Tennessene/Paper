@@ -4,11 +4,41 @@ Date: Mon, 10 Jul 2023 16:10:15 -0700
 Subject: [PATCH] improve checking handled tags in itemmeta
 
 
+diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
+index abba0986cc562f688682ba5e4822837a503586eb..5ac263889ff9cc4f4f6365ccb57917a23ad6edc1 100644
+--- a/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
++++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
+@@ -111,5 +111,10 @@ public class CraftMushroomCow extends CraftCow implements MushroomCow, io.paperm
+     public void setSheared(boolean sheared) {
+         if (sheared) this.shear();
+     }
++
++    @Override
++    public boolean isSheared() {
++        return false;
++    }
+     // Paper end
+ }
+diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
+index a0bd62d6abaa195bc49063fa23e87a7697f24b99..05cee4906169425ee6e80cf1302f2fa01f09d58f 100644
+--- a/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
++++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftSnowman.java
+@@ -34,5 +34,10 @@ public class CraftSnowman extends CraftGolem implements Snowman, com.destroystok
+     public void setSheared(boolean sheared) {
+         this.setDerp(sheared);
+     }
++    
++    @Override
++    public boolean isSheared() {
++        return this.isDerp();
++    }
+     // Paper end
+ }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-index a6c78854c10362864c2297de903ab9594cdb1eb6..251aac8690f15be2ad0e3f6399676205b7d7860c 100644
+index a4c4ba0d02f9a072236ce86c1e98e2c60b059cb8..c9cda18761c6f925f7490984a7e035396a44a73a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-@@ -32,116 +32,116 @@ import org.bukkit.inventory.meta.TropicalFishBucketMeta;
+@@ -39,120 +39,120 @@ import org.bukkit.inventory.meta.TropicalFishBucketMeta;
  
  public final class CraftItemMetas {
  
@@ -106,6 +136,11 @@ index a6c78854c10362864c2297de903ab9594cdb1eb6..251aac8690f15be2ad0e3f6399676205
 -            item -> new CraftMetaBlockState(item.getComponentsPatch(), CraftItemType.minecraftToBukkit(item.getItem())),
 +            (item, extras) -> new CraftMetaBlockState(item.getComponentsPatch(), CraftItemType.minecraftToBukkit(item.getItem()), extras),
              (type, meta) -> new CraftMetaBlockState(meta, type.asMaterial()));
+ 
+     private static final ItemMetaData<ShieldMeta> SHIELD_META_DATA = new ItemMetaData<>(ShieldMeta.class,
+-            item -> new CraftMetaShield(item.getComponentsPatch()),
++            (item, extras) -> new CraftMetaShield(item.getComponentsPatch()), // Paper
+             (type, meta) -> new CraftMetaShield(meta));
  
      private static final ItemMetaData<TropicalFishBucketMeta> TROPICAL_FISH_BUCKET_META_DATA = new ItemMetaData<>(TropicalFishBucketMeta.class,
 -            item -> new CraftMetaTropicalFishBucket(item.getComponentsPatch()),
@@ -286,10 +321,10 @@ index c56fb1eeea79176c4dbb1e9c0a8023f86220fe6a..1c17fb294d83d99ae657eff6a8a986bf
          getOrEmpty(tag, CraftMetaBanner.PATTERNS).ifPresent((entityTag) -> {
              List<BannerPatternLayers.Layer> patterns = entityTag.layers();
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-index 4faada5f974214f3054dc1bec9c79e2600c8df48..d7e5491cc0296563fb9fdf28d64b21a10c08ea4a 100644
+index 23dbc56edf0d16cf07ced2899942abae28397694..ed6e9d1f2d42392d92f4e3ae6f67c8d4ed700fb5 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-@@ -69,8 +69,8 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -70,8 +70,8 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
          this.blockEntityTag = te.blockEntityTag;
      }
  
@@ -301,7 +336,7 @@ index 4faada5f974214f3054dc1bec9c79e2600c8df48..d7e5491cc0296563fb9fdf28d64b21a1
  
          getOrEmpty(tag, CraftMetaBlockState.BLOCK_ENTITY_TAG).ifPresent((nbt) -> {
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java
-index 552ebe67f87b48734adf0da8ef78dcac9dd670a2..e064af399dcae40b4f35aa993d356b1462f91d6c 100644
+index 32e5188442551b3e72e1d4826d836d622d0e438a..257c835bc280eee9ee73ae75b5249bb568a687d0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java
 @@ -64,8 +64,8 @@ public class CraftMetaBook extends CraftMetaItem implements BookMeta, WritableBo
@@ -316,7 +351,7 @@ index 552ebe67f87b48734adf0da8ef78dcac9dd670a2..e064af399dcae40b4f35aa993d356b14
          getOrEmpty(tag, CraftMetaBook.BOOK_CONTENT).ifPresent((writable) -> {
              List<Filterable<String>> pages = writable.pages();
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBookSigned.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBookSigned.java
-index 162997fc80dfe2df1f13c802c1b610f04cb9d05a..806c1cbee7c4e23eee38c8f400ec2d924c9a360c 100644
+index fd3b12477c30d1eabdbe57ea779027931e9dd957..cbb3d80cc7cd81b2505dff999a0baede737165f7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBookSigned.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBookSigned.java
 @@ -78,8 +78,8 @@ public class CraftMetaBookSigned extends CraftMetaItem implements BookMeta {
@@ -451,7 +486,7 @@ index 8c1d2d0521da52f9a1262f5433da21700b9b0454..9600b23666668d7d581e2920a4e03e59
          getOrEmpty(tag, CraftMetaFirework.FIREWORKS).ifPresent((fireworks) -> {
              this.power = fireworks.flightDuration();
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 078b75f027b99a8a2a6a3ee19d087acc03eefe12..1903a6948242e2dc40302a0acb9171fc3cc3000e 100644
+index 6f3ab40a9d0bccd9a2c439bf0e200ba5cf0f5f6e..f9025eb9d733258a08fd31197920a93e2481f308 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 @@ -339,7 +339,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
@@ -481,7 +516,7 @@ index 078b75f027b99a8a2a6a3ee19d087acc03eefe12..1903a6948242e2dc40302a0acb9171fc
                  key.getValue().ifPresent((value) -> {
                      this.unhandledTags.set((DataComponentType) key.getKey(), value);
                  });
-@@ -2036,67 +2043,75 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -2043,68 +2050,76 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          this.version = version;
      }
  
@@ -521,6 +556,7 @@ index 078b75f027b99a8a2a6a3ee19d087acc03eefe12..1903a6948242e2dc40302a0acb9171fc
 -                        CraftMetaMap.MAP_COLOR.TYPE,
 -                        CraftMetaMap.MAP_ID.TYPE,
 -                        CraftMetaPotion.POTION_CONTENTS.TYPE,
+-                        CraftMetaShield.BASE_COLOR.TYPE,
 -                        CraftMetaSkull.SKULL_PROFILE.TYPE,
 -                        CraftMetaSkull.NOTE_BLOCK_SOUND.TYPE,
 -                        CraftMetaSpawnEgg.ENTITY_TAG.TYPE,
@@ -597,6 +633,7 @@ index 078b75f027b99a8a2a6a3ee19d087acc03eefe12..1903a6948242e2dc40302a0acb9171fc
 +                map.put(CraftMetaMusicInstrument.class, Set.of(CraftMetaMusicInstrument.GOAT_HORN_INSTRUMENT.TYPE));
 +                map.put(CraftMetaOminousBottle.class, Set.of(CraftMetaOminousBottle.OMINOUS_BOTTLE_AMPLIFIER.TYPE));
 +                map.put(CraftMetaPotion.class, Set.of(CraftMetaPotion.POTION_CONTENTS.TYPE));
++                map.put(CraftMetaShield.class, Set.of(CraftMetaShield.BASE_COLOR.TYPE));
 +                map.put(CraftMetaSkull.class, Set.of(CraftMetaSkull.SKULL_PROFILE.TYPE, CraftMetaSkull.NOTE_BLOCK_SOUND.TYPE));
 +                map.put(CraftMetaSpawnEgg.class, Set.of(CraftMetaSpawnEgg.ENTITY_TAG.TYPE));
 +                map.put(CraftMetaSuspiciousStew.class, Set.of(CraftMetaSuspiciousStew.EFFECTS.TYPE));
@@ -706,6 +743,19 @@ index d1cb8d520b6d7b0981d70412def71e7aab04560a..7f9182809f6e67ff571db0f365bc7e05
          getOrEmpty(tag, CraftMetaPotion.POTION_CONTENTS).ifPresent((potionContents) -> {
              potionContents.potion().ifPresent((potion) -> {
                  this.type = CraftPotionType.minecraftHolderToBukkit(potion);
+diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+index 2ad744875fea490eb8aa3883e4567ec1824c811a..c98b1cb9a2aca9c1e76893b4c9c851c747c13bcd 100644
+--- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
++++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+@@ -44,7 +44,7 @@ public class CraftMetaShield extends CraftMetaItem implements ShieldMeta, BlockS
+     }
+ 
+     CraftMetaShield(DataComponentPatch tag) {
+-        super(tag);
++        super(tag, null); // Paper
+ 
+         getOrEmpty(tag, CraftMetaShield.BASE_COLOR).ifPresent((color) -> {
+             this.banner = CraftMetaShield.getBlockState(DyeColor.getByWoolData((byte) color.getId()));
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java
 index d6e161374e0235031128a6ee86d1ffa875ea48aa..ab860f1179fa2618c8fbc30ac5f48ff78b8abb60 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSkull.java
@@ -722,7 +772,7 @@ index d6e161374e0235031128a6ee86d1ffa875ea48aa..ab860f1179fa2618c8fbc30ac5f48ff7
          getOrEmpty(tag, CraftMetaSkull.SKULL_PROFILE).ifPresent((resolvableProfile) -> {
              this.setProfile(resolvableProfile.gameProfile());
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSpawnEgg.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSpawnEgg.java
-index 2c6ee95edea9dc959d8d31d689dc27fea4080467..e4b8637e6d82e2ce7cfee2130e6422f0ef4e1fbc 100644
+index 6c2c3b514be0dab47f3e44f65bdc6a3574e59b7c..8ddf091b3ff1262b6c97e8fe72e0a80db5e1037d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSpawnEgg.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaSpawnEgg.java
 @@ -33,8 +33,8 @@ public class CraftMetaSpawnEgg extends CraftMetaItem implements SpawnEggMeta {

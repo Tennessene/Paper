@@ -5,7 +5,7 @@ Subject: [PATCH] Add velocity warnings
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4bfb836513d5194be271f4a82990ace98de69640..fd31d0e76d1a953b128e777b1bc27e24b1e03ed7 100644
+index 2486c5f70b079644222bef0dffe22abe9c441e59..40c195ec5c0ed1a8244dc7a5eaba9ae7a3a34e35 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -302,6 +302,7 @@ public final class CraftServer implements Server {

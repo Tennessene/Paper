@@ -9,7 +9,7 @@ public net.minecraft.resources.RegistryOps lookupProvider
 public net.minecraft.resources.RegistryOps$HolderLookupAdapter
 
 diff --git a/src/main/java/io/papermc/paper/registry/PaperRegistries.java b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
-index ead718efde812846fefec3e86d896fef7deb3d97..722e3786f5b36f9b9ccff4028a58c3893c7960d6 100644
+index 183a649cadcf96f2ecca18fef9b93f0176febeab..22715ff8b21d76004e8995758fb4aa05b2ec3486 100644
 --- a/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 +++ b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 @@ -2,6 +2,7 @@ package io.papermc.paper.registry;
@@ -20,7 +20,7 @@ index ead718efde812846fefec3e86d896fef7deb3d97..722e3786f5b36f9b9ccff4028a58c389
  import java.util.Collections;
  import java.util.IdentityHashMap;
  import java.util.List;
-@@ -54,6 +55,7 @@ import org.checkerframework.framework.qual.DefaultQualifier;
+@@ -56,6 +57,7 @@ import org.checkerframework.framework.qual.DefaultQualifier;
  
  import static io.papermc.paper.registry.entry.RegistryEntry.apiOnly;
  import static io.papermc.paper.registry.entry.RegistryEntry.entry;
@@ -28,7 +28,7 @@ index ead718efde812846fefec3e86d896fef7deb3d97..722e3786f5b36f9b9ccff4028a58c389
  
  @DefaultQualifier(NonNull.class)
  public final class PaperRegistries {
-@@ -136,6 +138,15 @@ public final class PaperRegistries {
+@@ -139,6 +141,15 @@ public final class PaperRegistries {
          return ResourceKey.create((ResourceKey<? extends Registry<M>>) PaperRegistries.registryToNms(typedKey.registryKey()), PaperAdventure.asVanilla(typedKey.key()));
      }
  
@@ -1311,10 +1311,10 @@ index 397bdacab9517354875ebc0bc68d35059b3c318b..908431652a0fea79b5a0cee1efd0c7a7
                  return writableRegistry;
              },
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
-index fc9aec589414bf8d3f672183928235b5b51d1a02..0f3c46b8bb93fc42160300c9988d04bed68f493b 100644
+index c2824cc07b761958a0df4b110bdfc53bd853b9e7..cacbb35d365c66881f2a42d099bb88c494b584ee 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
-@@ -163,11 +163,11 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
+@@ -165,11 +165,11 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
      private final Map<NamespacedKey, B> cache = new HashMap<>();
      private final Map<B, NamespacedKey> byValue = new java.util.IdentityHashMap<>(); // Paper - improve Registry
      private final net.minecraft.core.Registry<M> minecraftRegistry;
@@ -1328,7 +1328,7 @@ index fc9aec589414bf8d3f672183928235b5b51d1a02..0f3c46b8bb93fc42160300c9988d04be
          this.bukkitClass = bukkitClass;
          this.minecraftRegistry = minecraftRegistry;
          this.minecraftToBukkit = minecraftToBukkit;
-@@ -240,4 +240,17 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
+@@ -242,4 +242,17 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
          return this.byValue.get(value);
      }
      // Paper end - improve Registry
@@ -1347,7 +1347,7 @@ index fc9aec589414bf8d3f672183928235b5b51d1a02..0f3c46b8bb93fc42160300c9988d04be
 +    // Paper end - RegistrySet API
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index e182de47cc9c12f2d7051edd0ab3d2b4267f54b2..02be833b259873c27bd629bb3148f2286f418bc3 100644
+index 9e0d8fc51196ca07677f45e41614262036155e85..82ebfd09e9baca0a31ee41c0e5228bce3c54e74f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -668,6 +668,21 @@ public final class CraftMagicNumbers implements UnsafeValues {

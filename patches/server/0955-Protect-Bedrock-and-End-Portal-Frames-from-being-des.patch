@@ -107,10 +107,10 @@ index e6bfbe2588e0c2a1be14e38d654e889d392ad4db..e0c62227b279a5fe0f3868fbf9ce8c78
  
              world.playSound((Player) null, pos, SoundEvents.PISTON_CONTRACT, SoundSource.BLOCKS, 0.5F, world.random.nextFloat() * 0.15F + 0.6F);
 diff --git a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 87289d8ab94705999c67457a28538e7a5576acc3..fe7dc02ea55c2bcd39d12bfd4d315f0b8c7014c3 100644
+index 240c250a93289776686d09d7eae17c07d7278da5..f2036917c5ba9f536087d7ee559704055469730e 100644
 --- a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -173,7 +173,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -174,7 +174,7 @@ public abstract class BlockBehaviour implements FeatureElement {
      }
  
      protected void onExplosionHit(BlockState state, Level world, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> stackMerger) {
@@ -119,7 +119,7 @@ index 87289d8ab94705999c67457a28538e7a5576acc3..fe7dc02ea55c2bcd39d12bfd4d315f0b
              Block block = state.getBlock();
              boolean flag = explosion.getIndirectSourceEntity() instanceof Player;
  
-@@ -253,7 +253,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -254,7 +254,7 @@ public abstract class BlockBehaviour implements FeatureElement {
      }
  
      protected boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
@@ -128,7 +128,7 @@ index 87289d8ab94705999c67457a28538e7a5576acc3..fe7dc02ea55c2bcd39d12bfd4d315f0b
      }
  
      protected boolean canBeReplaced(BlockState state, Fluid fluid) {
-@@ -882,6 +882,12 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -883,6 +883,12 @@ public abstract class BlockBehaviour implements FeatureElement {
              return this.legacySolid;
          }
  
@@ -141,7 +141,7 @@ index 87289d8ab94705999c67457a28538e7a5576acc3..fe7dc02ea55c2bcd39d12bfd4d315f0b
          public boolean isValidSpawn(BlockGetter world, BlockPos pos, EntityType<?> type) {
              return this.getBlock().properties.isValidSpawn.test(this.asState(), world, pos, type);
          }
-@@ -985,7 +991,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -986,7 +992,7 @@ public abstract class BlockBehaviour implements FeatureElement {
          }
  
          public PushReaction getPistonPushReaction() {

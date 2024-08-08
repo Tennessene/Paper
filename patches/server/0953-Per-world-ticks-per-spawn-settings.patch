@@ -5,7 +5,7 @@ Subject: [PATCH] Per world ticks per spawn settings
 
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 2f1acea765d1b6726863cdc89707ca6148548493..81bdb6e64e04641f741c2c3350236685b097ec7a 100644
+index 471fd54edf6aa962d997878ee638974f7f594fa8..b7bf7b3b91046c81467aeb483087e12b6d9191bf 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -186,6 +186,15 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

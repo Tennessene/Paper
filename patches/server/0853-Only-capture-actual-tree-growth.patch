@@ -17,7 +17,7 @@ index 78951f50188528718cdb3dbbaabe3f9f2760ffe3..7826e2a52da47914aca39fef958b8f39
                      }
                  }
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index a6ca820adf6e86f8358967d8d3b2e45cd1135b2c..780b2fada591fb1b504fbf4828c31ec0dd1c25db 100644
+index 1016541b8f01cdb45ae96fbb777c6c38598fcc35..11c507b399f97c4c0bbe220e8a3c1cdb851c8a0a 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -466,6 +466,7 @@ public final class ItemStack implements DataComponentHolder {
@@ -29,7 +29,7 @@ index a6ca820adf6e86f8358967d8d3b2e45cd1135b2c..780b2fada591fb1b504fbf4828c31ec0
                      entityhuman.awardStat(Stats.ITEM_USED.get(item)); // SPIGOT-7236 - award stat
                  }
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index ed1c50d31fc077e4e009719fa622a44edefcdf2c..8337f2f1d650fc7efb830a7034e3676dc0695ee4 100644
+index 0a3e56302470f239d4840e4e32d2a0ce4611ff65..3f87e60c0d43703a8450b5920dac59a970809397 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -1378,4 +1378,14 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

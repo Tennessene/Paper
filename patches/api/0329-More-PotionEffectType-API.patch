@@ -5,7 +5,7 @@ Subject: [PATCH] More PotionEffectType API
 
 
 diff --git a/src/main/java/org/bukkit/Registry.java b/src/main/java/org/bukkit/Registry.java
-index a583d26883c8b7012203e128cd64113df94307c1..4d3e0b90579b33ff93fc565e8ee99a01b690c62b 100644
+index 987cde111d27638eb89105d2615a4da503de174b..4cfaf177052f40cc409f0a90272af147825e4b1f 100644
 --- a/src/main/java/org/bukkit/Registry.java
 +++ b/src/main/java/org/bukkit/Registry.java
 @@ -321,6 +321,33 @@ public interface Registry<T extends Keyed> extends Iterable<T> {

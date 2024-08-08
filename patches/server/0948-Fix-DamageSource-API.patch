@@ -220,10 +220,10 @@ index 4c6e15535fa40aad8cf1920f392589404f9ba79c..35eb95ef6fb6a0f7ea63351e90741c48
      }
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index d7bf00745a9016d0fe0c1d39ffaaac44276251d4..67aa8ebd1c4915fc7f18e3cf263eedf9b671a632 100644
+index 55d20ca20003fb0ee62a9730d31d1a741951aa3d..8d40f6008fa97db39af46ab4b43656c28571ea41 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1088,7 +1088,7 @@ public class CraftEventFactory {
+@@ -1092,7 +1092,7 @@ public class CraftEventFactory {
  
      private static EntityDamageEvent handleEntityDamageEvent(Entity entity, DamageSource source, Map<DamageModifier, Double> modifiers, Map<DamageModifier, Function<? super Double, Double>> modifierFunctions, boolean cancelled) {
          CraftDamageSource bukkitDamageSource = new CraftDamageSource(source);

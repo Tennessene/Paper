@@ -28981,10 +28981,10 @@ index d775ab8b0d37797f29e650842191d40691fb7afc..a7108b2be0746aa1f0e574d8c6f5ffad
  
      public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {}
 diff --git a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-index fe7dc02ea55c2bcd39d12bfd4d315f0b8c7014c3..ded6d148110fe3fbb6272ce44582a28472dd49a6 100644
+index f2036917c5ba9f536087d7ee559704055469730e..d0109633e8bdf109cfc9178963d7b6cf92f8b189 100644
 --- a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -762,7 +762,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -763,7 +763,7 @@ public abstract class BlockBehaviour implements FeatureElement {
          boolean test(BlockState state, BlockGetter world, BlockPos pos);
      }
  
@@ -28993,7 +28993,7 @@ index fe7dc02ea55c2bcd39d12bfd4d315f0b8c7014c3..ded6d148110fe3fbb6272ce44582a284
  
          private final int lightEmission;
          private final boolean useShapeForLightOcclusion;
-@@ -794,6 +794,76 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -795,6 +795,76 @@ public abstract class BlockBehaviour implements FeatureElement {
          private FluidState fluidState;
          private boolean isRandomlyTicking;
  
@@ -29070,7 +29070,7 @@ index fe7dc02ea55c2bcd39d12bfd4d315f0b8c7014c3..ded6d148110fe3fbb6272ce44582a284
          protected BlockStateBase(Block block, Reference2ObjectArrayMap<Property<?>, Comparable<?>> propertyMap, MapCodec<BlockState> codec) {
              super(block, propertyMap, codec);
              this.fluidState = Fluids.EMPTY.defaultFluidState();
-@@ -858,6 +928,43 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -859,6 +929,43 @@ public abstract class BlockBehaviour implements FeatureElement {
              this.shapeExceedsCube = this.cache == null || this.cache.largeCollisionShape; // Paper - moved from actual method to here
  
              this.legacySolid = this.calculateSolid();
@@ -29412,7 +29412,7 @@ index 365074be989aa4a178114fd5e9810f1a68640196..4af698930712389881601069a921f054
      @Override
      public BlockEntity getBlockEntity(BlockPos pos) {
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343159cfa35 100644
+index 21946a93b6a2a3c79d15af1d6e7eabc537ba0125..d94e24cfc56c195a47665c212f8fcc901648a4a1 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -53,7 +53,7 @@ import net.minecraft.world.ticks.LevelChunkTicks;
@@ -29509,7 +29509,7 @@ index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343
                      gameprofilerfiller.popPush("queueCheckLight");
                      this.level.getChunkSource().getLightEngine().checkBlock(blockposition);
                      gameprofilerfiller.pop();
-@@ -597,11 +644,12 @@ public class LevelChunk extends ChunkAccess {
+@@ -602,11 +649,12 @@ public class LevelChunk extends ChunkAccess {
  
      // CraftBukkit start
      public void loadCallback() {
@@ -29523,7 +29523,7 @@ index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343
          if (server != null) {
              /*
               * If it's a new world, the first few chunks are generated inside
-@@ -610,6 +658,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -615,6 +663,7 @@ public class LevelChunk extends ChunkAccess {
               */
              org.bukkit.Chunk bukkitChunk = new org.bukkit.craftbukkit.CraftChunk(this);
              server.getPluginManager().callEvent(new org.bukkit.event.world.ChunkLoadEvent(bukkitChunk, this.needsDecoration));
@@ -29531,7 +29531,7 @@ index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343
  
              if (this.needsDecoration) {
                  try (co.aikar.timings.Timing ignored = this.level.timings.chunkLoadPopulate.startTiming()) { // Paper
-@@ -638,13 +687,15 @@ public class LevelChunk extends ChunkAccess {
+@@ -643,13 +692,15 @@ public class LevelChunk extends ChunkAccess {
      }
  
      public void unloadCallback() {
@@ -29549,7 +29549,7 @@ index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343
          // Paper start
          this.loadedTicketLevel = false;
          // Paper end
-@@ -652,8 +703,27 @@ public class LevelChunk extends ChunkAccess {
+@@ -657,8 +708,27 @@ public class LevelChunk extends ChunkAccess {
  
      @Override
      public boolean isUnsaved() {
@@ -29578,7 +29578,7 @@ index 602ad80c2b93d320bf2a25832d25a58cb8c72e4b..3fa7bfa09b9d529b5cb9cad923f21343
      // CraftBukkit end
  
      public boolean isEmpty() {
-@@ -759,6 +829,7 @@ public class LevelChunk extends ChunkAccess {
+@@ -764,6 +834,7 @@ public class LevelChunk extends ChunkAccess {
  
          this.pendingBlockEntities.clear();
          this.upgradeData.upgrade(this);
@@ -32731,7 +32731,7 @@ index 69c7fe5bf5b914276a9f7a0e57ce668e569d91f9..33322b57b4c6922f4daad0f584733f0f
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 6321ae23f07bc3e07577914e6cf035e0c2cd4992..cc1f3c7fec4fa794da0b19f44ced9fd482dfdfc7 100644
+index 43a94a67b337f40522c25cc2252a6a5e1294ca0b..40c6ce263c025d26190f21adceaf899723da5a19 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1428,7 +1428,7 @@ public final class CraftServer implements Server {

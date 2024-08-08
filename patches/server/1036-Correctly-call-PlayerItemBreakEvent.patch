@@ -17,7 +17,7 @@ stack to not disrupt potential new vanilla changes that might depend on
 this behaviour.
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 0f2b3c5ca88478a541bf9e61ae61cc99a7d08836..2c312c0b741fb96a008881e9e01fa660a1fb63ab 100644
+index 3254124180df02d787202f4b00a4c52d40c6e7cf..d1340691d508c21c15237ec4a4626e9219d7c4f7 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -731,8 +731,10 @@ public final class ItemStack implements DataComponentHolder {

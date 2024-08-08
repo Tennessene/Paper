@@ -31,7 +31,7 @@ delays anymore.
 public net.minecraft.server.level.ChunkMap addEntity(Lnet/minecraft/world/entity/Entity;)V
 
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index ee3a5b2f2f1591f68bbacea01b8eafed65c29356..bac8e53cab360142f224965e68d8f9e6ae0c15f6 100644
+index 8206ec366b429858d9582e437781191e5aa0fa02..d91279f3bd009e1542e73354aadd6a16c80965e2 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
 @@ -1248,6 +1248,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
@@ -55,7 +55,7 @@ index a794131746c6cfdcbeeb64b31fb122a38be085c1..f0103bcfb29b9fed41c7642620d78fe7
      // CraftBukkit end
      public boolean isRealPlayer; // Paper
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 8b0c098c795c5a57fce96ad5d98ac8436024cda9..ed0ffff1cfc25f66e1947e40008c6c7259b17019 100644
+index 0d8a7b00aa681d79ba82c69c4683a5bbb656c9dd..01362d092a5b170ce5c334422d7797f190666e25 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -297,6 +297,12 @@ public abstract class PlayerList {

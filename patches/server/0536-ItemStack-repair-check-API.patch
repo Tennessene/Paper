@@ -5,7 +5,7 @@ Subject: [PATCH] ItemStack repair check API
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index fd36c8c62503e4ce035d51b0cc4e8dd55e66cc5d..dec695198708838fd77285ba818e82861da49a98 100644
+index f833fcead688180daf7039e09dce46fde924043c..07de1316b65e71ab0a372f1a51ae3bc6953d6530 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -526,6 +526,14 @@ public final class CraftMagicNumbers implements UnsafeValues {

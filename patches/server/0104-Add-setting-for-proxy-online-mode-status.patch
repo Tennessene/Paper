@@ -60,7 +60,7 @@ index a0b0614ac7d2009db5c6c10ab4a5f09dd447c635..653856d0b8dcf2baf4cc77a276f17c8c
          } else {
              String[] astring1 = astring;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 5461e0a1ef7f342cbd9fb6f291e33e645b414058..ff807bfe89708d9c680b84eda902b49f3167f3a4 100644
+index bed9c6bd985417661d5e2c52a02198624b98cd22..4732b6fd74006591aba7101da2a0931164898cf4 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1886,7 +1886,7 @@ public final class CraftServer implements Server {

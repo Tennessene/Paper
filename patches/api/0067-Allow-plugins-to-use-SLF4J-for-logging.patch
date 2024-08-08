@@ -45,7 +45,7 @@ index 258d7010d24c529c9bbc76cc26adf226c641ee58..4da053d427f3f9c5e7fc144408836ebe
          "https://javadoc.io/doc/org.apache.maven.resolver/maven-resolver-api/1.7.3", // Paper
      )
 diff --git a/src/main/java/org/bukkit/plugin/Plugin.java b/src/main/java/org/bukkit/plugin/Plugin.java
-index 8c76716249e44ed8bf6be94c1f5c7b6d9bb35be2..4eb639fbb46a0848be207149ea433455550fae1c 100644
+index 68a0ed5f0ed25e98f4ab4d1e482ec2ccfda9cd3a..46fc37a36403c8fbc4c0c9f863d4d57eb3896bd4 100644
 --- a/src/main/java/org/bukkit/plugin/Plugin.java
 +++ b/src/main/java/org/bukkit/plugin/Plugin.java
 @@ -198,6 +198,22 @@ public interface Plugin extends TabExecutor {

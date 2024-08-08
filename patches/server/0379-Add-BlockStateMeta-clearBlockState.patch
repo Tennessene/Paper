@@ -5,10 +5,10 @@ Subject: [PATCH] Add BlockStateMeta#clearBlockState
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-index 80ace77a9b11d63a1b2271c868c59711f5d2f89d..4faada5f974214f3054dc1bec9c79e2600c8df48 100644
+index 301d883a7626e3abd222517400367fc40d6fa2bd..23dbc56edf0d16cf07ced2899942abae28397694 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-@@ -195,6 +195,13 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -198,6 +198,13 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
          return this.blockEntityTag != null;
      }
  
@@ -22,3 +22,30 @@ index 80ace77a9b11d63a1b2271c868c59711f5d2f89d..4faada5f974214f3054dc1bec9c79e26
      @Override
      public BlockState getBlockState() {
          return (this.blockEntityTag != null) ? this.blockEntityTag.copy() : CraftMetaBlockState.getBlockState(this.material, null);
+diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+index 3542c6e72f5ff459d50b73fa210ea835f52dfa49..2ad744875fea490eb8aa3883e4567ec1824c811a 100644
+--- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
++++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaShield.java
+@@ -7,8 +7,10 @@ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Map;
+ import net.minecraft.core.BlockPos;
++import net.minecraft.core.component.DataComponentMap;
+ import net.minecraft.core.component.DataComponentPatch;
+ import net.minecraft.core.component.DataComponents;
++import net.minecraft.world.item.component.CustomData;
+ import net.minecraft.world.level.block.entity.BannerPatternLayers;
+ import org.bukkit.DyeColor;
+ import org.bukkit.Material;
+@@ -298,4 +300,11 @@ public class CraftMetaShield extends CraftMetaItem implements ShieldMeta, BlockS
+             default -> throw new IllegalArgumentException("Unknown banner colour");
+         };
+     }
++
++    // Paper start - add method to clear block state
++    @Override
++    public void clearBlockState() {
++        this.banner = null;
++    }
++    // Paper end - add method to clear block state
+ }

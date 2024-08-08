@@ -6,10 +6,10 @@ Subject: [PATCH] Improve inlining for some hot BlockBehavior and FluidState
 
 
 diff --git a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-index 6fe078fdf619c4df664f1dce6a0f5d202c21b35e..9d6cc0b8dbc451dfff1ddd8e7be32d11434cdb69 100644
+index 46dd499c2023ec482ae7204d2894fb4100d9233b..a8bec3c405732e5863cf717b1fe948d00837bed2 100644
 --- a/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
 +++ b/src/main/java/net/minecraft/world/level/block/state/BlockBehaviour.java
-@@ -906,15 +906,15 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -907,15 +907,15 @@ public abstract class BlockBehaviour implements FeatureElement {
              return this.shapeExceedsCube; // Paper - moved into shape cache init
          }
  
@@ -28,7 +28,7 @@ index 6fe078fdf619c4df664f1dce6a0f5d202c21b35e..9d6cc0b8dbc451dfff1ddd8e7be32d11
              return this.isAir;
          }
  
-@@ -998,7 +998,7 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -999,7 +999,7 @@ public abstract class BlockBehaviour implements FeatureElement {
              }
          }
  
@@ -37,7 +37,7 @@ index 6fe078fdf619c4df664f1dce6a0f5d202c21b35e..9d6cc0b8dbc451dfff1ddd8e7be32d11
              return this.canOcclude;
          }
  
-@@ -1214,11 +1214,11 @@ public abstract class BlockBehaviour implements FeatureElement {
+@@ -1215,11 +1215,11 @@ public abstract class BlockBehaviour implements FeatureElement {
              return this.getBlock().builtInRegistryHolder().is(key);
          }
  

@@ -5,7 +5,7 @@ Subject: [PATCH] Fix spigot sound playing for BlockItem ItemStacks
 
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 57510b85caf8914290ab0afb89cfb773158715b8..8777e634a69825302da7ed5031a344b80724783e 100644
+index 7c52ae813bfe47983ca94f4daf68f17e899949da..7cb7443aa60b9a552d8d9b67ddbf8b3e54af24e8 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -571,7 +571,11 @@ public final class ItemStack implements DataComponentHolder {

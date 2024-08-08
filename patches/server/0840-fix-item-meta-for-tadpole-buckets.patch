@@ -5,10 +5,10 @@ Subject: [PATCH] fix item meta for tadpole buckets
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-index 4ae9930c2d74e5b1e3ad0c2ecf6556dc59cbf23c..a6c78854c10362864c2297de903ab9594cdb1eb6 100644
+index c9fbc01be0b0e7fd1cafb091d06496f4ba1e7c2c..a4c4ba0d02f9a072236ce86c1e98e2c60b059cb8 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftItemMetas.java
-@@ -286,7 +286,7 @@ public final class CraftItemMetas {
+@@ -263,7 +263,7 @@ public final class CraftItemMetas {
          if (itemType == ItemType.SUSPICIOUS_STEW) {
              return CraftItemMetas.asType(CraftItemMetas.SUSPICIOUS_STEW_META_DATA);
          }
@@ -30,7 +30,7 @@ index 27af7ca9d62bdb4a24be5af139c181d7bc271ba5..3ff0340c40e9dc9a6e690de15ccade7a
              Material.GLOW_ITEM_FRAME,
              Material.PAINTING
 diff --git a/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java b/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
-index a1d8da4e0de3f84194f28d7d18fa795d53714590..d6018439015583fa0344c7c01b2e60a13de29795 100644
+index 0715f43f3f8235d28a12b9d49d78c765a946c53f..b6da1c2902139d4c7b01ac7b3407d4f6ac3990e2 100644
 --- a/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
 +++ b/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
 @@ -208,6 +208,27 @@ public class ItemMetaTest extends AbstractTestingBase {

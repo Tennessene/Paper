@@ -69,10 +69,10 @@ index d34d8fe70379dcad9540739ec0ae1c94f01fc46b..fadd341ff398886a4da102eefa1beb95
          this.playSound(SoundEvents.SNIFFER_EGG_PLOP, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 0.5F);
          } // Paper - Call EntityDropItemEvent
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 82b98a9b6418614283ac512f59586877f577b35b..b35c6393c3af2519be648e75c7d09038cf94ccbf 100644
+index 443c50ed1b1b077aae46864b8dc1fbe6a3b4ea85..345bc6ed3be40c8c8ae530a566a554bbc5247158 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -2168,4 +2168,28 @@ public class CraftEventFactory {
+@@ -2182,4 +2182,28 @@ public class CraftEventFactory {
          return event.callEvent();
      }
      // Paper end

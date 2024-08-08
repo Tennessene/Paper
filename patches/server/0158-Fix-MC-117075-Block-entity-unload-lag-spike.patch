@@ -5,7 +5,7 @@ Subject: [PATCH] Fix MC-117075: Block entity unload lag spike
 
 
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 4fcbea7b8b12be10157da0c1f35c06e47c0334ad..ab511f4c056f07aa79aab7b662073bb8db4b1526 100644
+index 32f2516d1a1001d6a5c3f1f0fe0ffba21a9436dd..99d5271c018de1e52b6380f0b94e491ce36db61b 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -726,6 +726,8 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

@@ -79,10 +79,10 @@ index 12ab8f7cde88cd6ce3ad474fe2843d5d30c3c0d7..c1bad887d1340ebc7c63fda3dceff929
          if (!player.isImmobile()) player.connection.send(new ClientboundOpenScreenPacket(container.containerId, windowType, io.papermc.paper.adventure.PaperAdventure.asVanilla(adventure$title))); // Paper - Prevent opening inventories when frozen
          player.containerMenu = container;
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 9d7bcd7a99cfda0776d267bada384304558fa6fe..6ca59ba6a713e452d146182d143b99b07696af8b 100644
+index fcd4a6d5fff3f30c84688081088e577fa6dd7c5b..e54b93b366ce42454179a23acdd0353ace0d486e 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1397,10 +1397,21 @@ public class CraftEventFactory {
+@@ -1401,10 +1401,21 @@ public class CraftEventFactory {
      }
  
      public static AbstractContainerMenu callInventoryOpenEvent(ServerPlayer player, AbstractContainerMenu container) {
@@ -105,7 +105,7 @@ index 9d7bcd7a99cfda0776d267bada384304558fa6fe..6ca59ba6a713e452d146182d143b99b0
          if (player.containerMenu != player.inventoryMenu) { // fire INVENTORY_CLOSE if one already open
              player.connection.handleContainerClose(new ServerboundContainerClosePacket(player.containerMenu.containerId), InventoryCloseEvent.Reason.OPEN_NEW); // Paper - Inventory close reason
          }
-@@ -1415,10 +1426,10 @@ public class CraftEventFactory {
+@@ -1419,10 +1430,10 @@ public class CraftEventFactory {
  
          if (event.isCancelled()) {
              container.transferTo(player.containerMenu, craftPlayer);

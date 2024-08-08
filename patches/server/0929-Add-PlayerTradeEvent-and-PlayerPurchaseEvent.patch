@@ -107,7 +107,7 @@ index 4c7e91977fa590abfe7eb3704d8008ed6d4e3ab3..32910f677b0522ac8ec513fa0d00b714
                      break;
                  }
 diff --git a/src/main/java/net/minecraft/world/inventory/MerchantMenu.java b/src/main/java/net/minecraft/world/inventory/MerchantMenu.java
-index ecefd4075c097e2118ec23e87baf36465c40f85f..2992e86f5f83431e230162380b33721df785ba91 100644
+index e45ab844afdf1a65f23eeff4c4d6cd9e3a8a28e2..5de2030452b96a4df7ce0be82f07e002db595dee 100644
 --- a/src/main/java/net/minecraft/world/inventory/MerchantMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/MerchantMenu.java
 @@ -135,12 +135,12 @@ public class MerchantMenu extends AbstractContainerMenu {

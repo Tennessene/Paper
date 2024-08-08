@@ -8,7 +8,7 @@ faster on its own, however removing the try catch makes it
 easier to inline due to code size
 
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index a0f9fb2ac15f2fa51a3bbe915550155ac2e76649..c7be1f8fdca34bcc12ecbe40ee5f426e0cd068d7 100644
+index 6775217c065026aa61fce56a17c93010209b6941..59f9ff720e92c69e11afe7f6ccecd81b0e54a74d 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 @@ -270,18 +270,20 @@ public class LevelChunk extends ChunkAccess {

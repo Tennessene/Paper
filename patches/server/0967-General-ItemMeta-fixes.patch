@@ -12,7 +12,7 @@ public net/minecraft/world/level/block/entity/BlockEntity saveId(Lnet/minecraft/
 Co-authored-by: GhastCraftHD <julius.gruenberg@leghast.de>
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index fa4bdf8bdbd6eaeb854e62a2acb45d7998e4aa2b..8309d2f7872ccdbc9d76f0fbf481411f74080148 100644
+index ebe470ca361ec5747a843b60d82f567d41d7c9fa..f9a4bebb321207abb00b1af1c17ebda623cc950e 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -1275,6 +1275,11 @@ public final class ItemStack implements DataComponentHolder {
@@ -28,10 +28,10 @@ index fa4bdf8bdbd6eaeb854e62a2acb45d7998e4aa2b..8309d2f7872ccdbc9d76f0fbf481411f
      // CraftBukkit end
  
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
-index 6207c6063cd11ccb1177fe7016c49c02a3416990..cd3b952a228c09077c2e74183a34ddb32811280b 100644
+index f4579be015c213917fc0e3f96218a4e7f4877d73..caba661b16c24320277520bbdb25bcfa83d4b040 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
-@@ -139,6 +139,11 @@ public abstract class BlockEntity {
+@@ -152,6 +152,11 @@ public abstract class BlockEntity {
          CompoundTag nbttagcompound = new CompoundTag();
  
          this.saveAdditional(nbttagcompound, registryLookup);
@@ -158,10 +158,10 @@ index 1c17fb294d83d99ae657eff6a8a986bf72c6ec47..b9d6a4a8f78a0e26d888b6bfdff25c3a
  
          for (Pattern p : this.patterns) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d46261c1252af 100644
+index ed6e9d1f2d42392d92f4e3ae6f67c8d4ed700fb5..0ec38517b3456958a19fc3162b5532a4e00550cf 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBlockState.java
-@@ -50,9 +50,24 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -51,9 +51,24 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
  
      @ItemMetaKey.Specific(ItemMetaKey.Specific.To.NBT)
      static final ItemMetaKeyType<CustomData> BLOCK_ENTITY_TAG = new ItemMetaKeyType<>(DataComponents.BLOCK_ENTITY_DATA, "BlockEntityTag");
@@ -181,13 +181,13 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
 +        this.blockEntityTag = this.blockEntityTag != null ? this.blockEntityTag : CustomData.EMPTY;
 +    }
 +    private Material materialForBlockEntityType() {
-+        return (this.material != Material.SHIELD) ? this.material : CraftMetaBlockState.shieldToBannerHack();
++        return (this.material != Material.SHIELD) ? this.material : CraftMetaBlockState.shieldToBannerHack(this.blockEntityTag.getUnsafe());
 +    }
 +    // Paper end
      private CompoundTag internalTag;
  
      CraftMetaBlockState(CraftMetaItem meta, Material material) {
-@@ -61,41 +76,61 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -62,41 +77,61 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
  
          if (!(meta instanceof CraftMetaBlockState)
                  || ((CraftMetaBlockState) meta).material != material) {
@@ -262,19 +262,16 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
          }
      }
  
-@@ -108,7 +143,10 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
-         } else {
+@@ -110,7 +145,7 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
              this.material = Material.AIR;
          }
--        this.blockEntityTag = CraftMetaBlockState.getBlockState(this.material, this.internalTag);
-+        // Paper start
-+        if (this.internalTag != null) { // legacy
-+            this.setBlockState(CraftMetaBlockState.getBlockState(this.material, this.internalTag));
-+        }
-         this.internalTag = null;
+         if (this.internalTag != null) {
+-            this.blockEntityTag = CraftMetaBlockState.getBlockState(this.material, this.internalTag);
++            this.setBlockState(CraftMetaBlockState.getBlockState(this.material, this.internalTag)); // Paper
+             this.internalTag = null;
+         }
      }
- 
-@@ -116,13 +154,21 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -119,13 +154,21 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
      void applyToItem(CraftMetaItem.Applicator tag) {
          super.applyToItem(tag);
  
@@ -301,7 +298,7 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
      }
  
      @Override
-@@ -131,14 +177,29 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -134,14 +177,29 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
  
          if (tag.contains(CraftMetaBlockState.BLOCK_ENTITY_TAG.NBT, CraftMagicNumbers.NBT.TAG_COMPOUND)) {
              this.internalTag = tag.getCompound(CraftMetaBlockState.BLOCK_ENTITY_TAG.NBT);
@@ -333,7 +330,7 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
      }
  
      @Override
-@@ -152,9 +213,10 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -155,9 +213,10 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
      int applyHash() {
          final int original;
          int hash = original = super.applyHash();
@@ -347,7 +344,7 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
          return original != hash ? CraftMetaBlockState.class.hashCode() ^ hash : hash;
      }
  
-@@ -166,45 +228,71 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -169,45 +228,71 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
          if (meta instanceof CraftMetaBlockState) {
              CraftMetaBlockState that = (CraftMetaBlockState) meta;
  
@@ -429,9 +426,9 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
      }
  
      private static CraftBlockEntityState<?> getBlockState(Material material, CompoundTag blockEntityTag) {
-@@ -234,7 +322,23 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
+@@ -237,7 +322,23 @@ public class CraftMetaBlockState extends CraftMetaItem implements BlockStateMeta
          Class<?> blockStateType = CraftBlockStates.getBlockStateType(stateMaterial);
-         Preconditions.checkArgument(blockStateType == blockState.getClass() && blockState instanceof CraftBlockEntityState, "Invalid blockState for " + this.material);
+         Preconditions.checkArgument(blockStateType == blockState.getClass() && blockState instanceof CraftBlockEntityState, "Invalid blockState for %s", this.material);
  
 -        this.blockEntityTag = (CraftBlockEntityState<?>) blockState;
 +        // Paper start - when a new BlockState is set, the components from that block entity
@@ -453,7 +450,7 @@ index d7e5491cc0296563fb9fdf28d64b21a10c08ea4a..224ea52574b80bb087c5c62eaf1d4626
 +        // Paper end
      }
  
-     private static Material shieldToBannerHack() {
+     private static Material shieldToBannerHack(CompoundTag tag) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java
 index 257c835bc280eee9ee73ae75b5249bb568a687d0..70f20de37c1f8d57a8d9fe00dcd864fdd9948ec2 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaBook.java
@@ -805,7 +802,7 @@ index 9600b23666668d7d581e2920a4e03e59cc2339fb..0eceacbb096481d3bd31f5f99e964c88
      }
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0d246e36e 100644
+index f9025eb9d733258a08fd31197920a93e2481f308..4de88523eda52fc20e06aa85c54890f5dd95a912 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 @@ -182,9 +182,10 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
@@ -851,7 +848,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          CraftMetaItem.getOrEmpty(tag, CraftMetaItem.NAME).ifPresent((component) -> {
              this.displayName = component;
          });
-@@ -791,7 +797,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -798,7 +804,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          Map<?, ?> mods = SerializableMeta.getObject(Map.class, map, key.BUKKIT, true);
          Multimap<Attribute, AttributeModifier> result = LinkedHashMultimap.create();
          if (mods == null) {
@@ -860,7 +857,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          }
  
          for (Object obj : mods.keySet()) {
-@@ -894,7 +900,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -901,7 +907,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              itemTag.put(CraftMetaItem.JUKEBOX_PLAYABLE, this.jukebox.getHandle());
          }
  
@@ -869,7 +866,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
              itemTag.put(CraftMetaItem.DAMAGE, this.damage);
          }
  
-@@ -959,10 +965,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -966,10 +972,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      }
  
      void applyModifiers(Multimap<Attribute, AttributeModifier> modifiers, CraftMetaItem.Applicator tag) {
@@ -882,7 +879,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
              return;
          }
  
-@@ -999,7 +1003,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1006,7 +1010,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Overridden
      boolean isEmpty() {
@@ -891,7 +888,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
      }
  
      // Paper start
-@@ -1095,6 +1099,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1102,6 +1106,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public void lore(final List<? extends net.kyori.adventure.text.Component> lore) {
@@ -899,7 +896,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          this.lore = lore != null ? io.papermc.paper.adventure.PaperAdventure.asVanilla(lore) : null;
      }
      // Paper end
-@@ -1153,7 +1158,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1160,7 +1165,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      @Override
      public void removeEnchantments() {
          if (this.hasEnchants()) {
@@ -908,7 +905,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          }
      }
  
-@@ -1219,6 +1224,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1226,6 +1231,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      // Paper end
      @Override
      public void setLore(List<String> lore) {
@@ -916,7 +913,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          if (lore == null || lore.isEmpty()) {
              this.lore = null;
          } else {
-@@ -1234,6 +1240,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1241,6 +1247,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      // Paper start
      @Override
      public void setLoreComponents(List<net.md_5.bungee.api.chat.BaseComponent[]> lore) {
@@ -924,7 +921,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          if (lore == null) {
              this.lore = null;
          } else {
-@@ -1375,7 +1382,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1382,7 +1389,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public FoodComponent getFood() {
@@ -933,7 +930,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
      }
  
      @Override
-@@ -1431,7 +1438,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1438,7 +1445,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public Multimap<Attribute, AttributeModifier> getAttributeModifiers(@Nullable EquipmentSlot slot) {
@@ -942,7 +939,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          SetMultimap<Attribute, AttributeModifier> result = LinkedHashMultimap.create();
          for (Map.Entry<Attribute, AttributeModifier> entry : this.attributeModifiers.entries()) {
              if (entry.getValue().getSlot() == null || entry.getValue().getSlot() == slot) {
-@@ -1444,6 +1451,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1451,6 +1458,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      @Override
      public Collection<AttributeModifier> getAttributeModifiers(@Nonnull Attribute attribute) {
          Preconditions.checkNotNull(attribute, "Attribute cannot be null");
@@ -950,7 +947,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          return this.attributeModifiers.containsKey(attribute) ? ImmutableList.copyOf(this.attributeModifiers.get(attribute)) : null;
      }
  
-@@ -1451,22 +1459,33 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1458,22 +1466,33 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      public boolean addAttributeModifier(@Nonnull Attribute attribute, @Nonnull AttributeModifier modifier) {
          Preconditions.checkNotNull(attribute, "Attribute cannot be null");
          Preconditions.checkNotNull(modifier, "AttributeModifier cannot be null");
@@ -988,7 +985,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
  
          Iterator<Map.Entry<Attribute, AttributeModifier>> iterator = attributeModifiers.entries().iterator();
          while (iterator.hasNext()) {
-@@ -1476,6 +1495,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1483,6 +1502,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  iterator.remove();
                  continue;
              }
@@ -996,7 +993,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
              this.attributeModifiers.put(next.getKey(), next.getValue());
          }
      }
-@@ -1483,13 +1503,13 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1490,13 +1510,13 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      @Override
      public boolean removeAttributeModifier(@Nonnull Attribute attribute) {
          Preconditions.checkNotNull(attribute, "Attribute cannot be null");
@@ -1012,7 +1009,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          int removed = 0;
          Iterator<Map.Entry<Attribute, AttributeModifier>> iter = this.attributeModifiers.entries().iterator();
  
-@@ -1509,7 +1529,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1516,7 +1536,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      public boolean removeAttributeModifier(@Nonnull Attribute attribute, @Nonnull AttributeModifier modifier) {
          Preconditions.checkNotNull(attribute, "Attribute cannot be null");
          Preconditions.checkNotNull(modifier, "AttributeModifier cannot be null");
@@ -1021,7 +1018,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          int removed = 0;
          Iterator<Map.Entry<Attribute, AttributeModifier>> iter = this.attributeModifiers.entries().iterator();
  
-@@ -1531,7 +1551,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1538,7 +1558,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public String getAsString() {
@@ -1030,7 +1027,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          this.applyToItem(tag);
          DataComponentPatch patch = tag.build();
          Tag nbt = DataComponentPatch.CODEC.encodeStart(MinecraftServer.getDefaultRegistryAccess().createSerializationContext(NbtOps.INSTANCE), patch).getOrThrow();
-@@ -1540,7 +1560,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1547,7 +1567,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public String getAsComponentString() {
@@ -1039,7 +1036,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          this.applyToItem(tag);
          DataComponentPatch patch = tag.build();
  
-@@ -1580,6 +1600,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1587,6 +1607,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          if (first == null || second == null) {
              return false;
          }
@@ -1047,7 +1044,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          for (Map.Entry<Attribute, AttributeModifier> entry : first.entries()) {
              if (!second.containsEntry(entry.getKey(), entry.getValue())) {
                  return false;
-@@ -1595,19 +1616,33 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1602,19 +1623,33 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public boolean hasDamage() {
@@ -1083,7 +1080,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
      @Override
      public boolean hasMaxDamage() {
          return this.maxDamage != null;
-@@ -1621,6 +1656,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1628,6 +1663,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Override
      public void setMaxDamage(Integer maxDamage) {
@@ -1091,7 +1088,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          this.maxDamage = maxDamage;
      }
  
-@@ -1652,7 +1688,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1659,7 +1695,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  && (this.hasCustomModelData() ? that.hasCustomModelData() && this.customModelData.equals(that.customModelData) : !that.hasCustomModelData())
                  && (this.hasBlockData() ? that.hasBlockData() && this.blockData.equals(that.blockData) : !that.hasBlockData())
                  && (this.hasRepairCost() ? that.hasRepairCost() && this.repairCost == that.repairCost : !that.hasRepairCost())
@@ -1100,7 +1097,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
                  && (this.unhandledTags.equals(that.unhandledTags))
                  && (this.removedTags.equals(that.removedTags))
                  && (Objects.equals(this.customTag, that.customTag))
-@@ -1667,7 +1703,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1674,7 +1710,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  && (this.hasFood() ? that.hasFood() && this.food.equals(that.food) : !that.hasFood())
                  && (this.hasTool() ? that.hasTool() && this.tool.equals(that.tool) : !that.hasTool())
                  && (this.hasJukeboxPlayable() ? that.hasJukeboxPlayable() && this.jukebox.equals(that.jukebox) : !that.hasJukeboxPlayable())
@@ -1109,7 +1106,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
                  && (this.hasMaxDamage() ? that.hasMaxDamage() && this.maxDamage.equals(that.maxDamage) : !that.hasMaxDamage())
                  && (this.canPlaceOnPredicates != null ? that.canPlaceOnPredicates != null && this.canPlaceOnPredicates.equals(that.canPlaceOnPredicates) : that.canPlaceOnPredicates == null) // Paper
                  && (this.canBreakPredicates != null ? that.canBreakPredicates != null && this.canBreakPredicates.equals(that.canBreakPredicates) : that.canBreakPredicates == null) // Paper
-@@ -1713,9 +1749,9 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1720,9 +1756,9 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          hash = 61 * hash + (this.hasFood() ? this.food.hashCode() : 0);
          hash = 61 * hash + (this.hasTool() ? this.tool.hashCode() : 0);
          hash = 61 * hash + (this.hasJukeboxPlayable() ? this.jukebox.hashCode() : 0);
@@ -1122,7 +1119,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          hash = 61 * hash + (this.canPlaceOnPredicates != null ? this.canPlaceOnPredicates.hashCode() : 0); // Paper
          hash = 61 * hash + (this.canBreakPredicates != null ? this.canBreakPredicates.hashCode() : 0); // Paper
          hash = 61 * hash + this.version;
-@@ -1735,7 +1771,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1742,7 +1778,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              if (this.enchantments != null) {
                  clone.enchantments = new EnchantmentMap(this.enchantments); // Paper
              }
@@ -1131,7 +1128,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
                  clone.attributeModifiers = LinkedHashMultimap.create(this.attributeModifiers);
              }
              if (this.customTag != null) {
-@@ -1863,7 +1899,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1870,7 +1906,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              builder.put(CraftMetaItem.JUKEBOX_PLAYABLE.BUKKIT, this.jukebox);
          }
  
@@ -1140,7 +1137,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
              builder.put(CraftMetaItem.DAMAGE.BUKKIT, this.damage);
          }
  
-@@ -1964,7 +2000,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1971,7 +2007,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      }
  
      static void serializeModifiers(Multimap<Attribute, AttributeModifier> modifiers, ImmutableMap.Builder<String, Object> builder, ItemMetaKey key) {
@@ -1149,7 +1146,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
              return;
          }
  
-@@ -2046,7 +2082,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -2053,7 +2089,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      // Paper start - improve checking handled tags
      @org.jetbrains.annotations.VisibleForTesting
      public static final Map<Class<? extends CraftMetaItem>, Set<DataComponentType<?>>> HANDLED_DCTS_PER_TYPE = new HashMap<>();
@@ -1158,7 +1155,7 @@ index 1903a6948242e2dc40302a0acb9171fc3cc3000e..a9acbb181dd72238b63fb08fda1b3bc0
          CraftMetaItem.NAME.TYPE,
          CraftMetaItem.ITEM_NAME.TYPE,
          CraftMetaItem.LORE.TYPE,
-@@ -2114,7 +2150,12 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -2122,7 +2158,12 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
      // Paper end - improve checking handled data component types
  
      protected static <T> Optional<? extends T> getOrEmpty(DataComponentPatch tag, ItemMetaKeyType<T> type) {
@@ -1458,10 +1455,10 @@ index 17705059b81942e4df43a4a5180092e09c985ade..80e6b85a107d5236edba99540cb5074e
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/SerializableMeta.java b/src/main/java/org/bukkit/craftbukkit/inventory/SerializableMeta.java
-index b7e93a6ec72ec3e3390fefa52fda0c2cd8e17c0c..758778650bebf7b96eefab42543e812849124b2f 100644
+index e00b757d6059715e8697428008fcb3e6e7abbe2e..dcf02bd0f7f4c67f5ab98003cc932b960704eef1 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/SerializableMeta.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/SerializableMeta.java
-@@ -128,4 +128,21 @@ public final class SerializableMeta implements ConfigurationSerializable {
+@@ -136,4 +136,21 @@ public final class SerializableMeta implements ConfigurationSerializable {
          }
          throw new IllegalArgumentException(field + "(" + object + ") is not a valid " + clazz);
      }
@@ -1484,10 +1481,10 @@ index b7e93a6ec72ec3e3390fefa52fda0c2cd8e17c0c..758778650bebf7b96eefab42543e8128
 +    // Paper end - General ItemMeta Fixes
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/components/CraftFoodComponent.java b/src/main/java/org/bukkit/craftbukkit/inventory/components/CraftFoodComponent.java
-index 63fc9138dc3388ceb9acf672b3f75ba0976e8e54..5986aa3588487c2caef4c895f8883e38a674b61c 100644
+index 92cad73219e11dc5922630769f9dd3a329ea6da1..bde61de7eda72b2e24ddef56ff93a0b46c08670c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/components/CraftFoodComponent.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/components/CraftFoodComponent.java
-@@ -109,6 +109,7 @@ public final class CraftFoodComponent implements FoodComponent {
+@@ -114,6 +114,7 @@ public final class CraftFoodComponent implements FoodComponent {
  
      @Override
      public void setEatSeconds(float eatSeconds) {
@@ -1495,7 +1492,7 @@ index 63fc9138dc3388ceb9acf672b3f75ba0976e8e54..5986aa3588487c2caef4c895f8883e38
          this.handle = new FoodProperties(this.handle.nutrition(), this.handle.saturation(), this.handle.canAlwaysEat(), eatSeconds, this.handle.usingConvertsTo(), this.handle.effects());
      }
  
-@@ -119,6 +120,7 @@ public final class CraftFoodComponent implements FoodComponent {
+@@ -124,6 +125,7 @@ public final class CraftFoodComponent implements FoodComponent {
  
      @Override
      public void setUsingConvertsTo(ItemStack item) {
@@ -1503,7 +1500,7 @@ index 63fc9138dc3388ceb9acf672b3f75ba0976e8e54..5986aa3588487c2caef4c895f8883e38
          this.handle = new FoodProperties(this.handle.nutrition(), this.handle.saturation(), this.handle.canAlwaysEat(), this.handle.eatSeconds(), Optional.ofNullable(item).map(CraftItemStack::asNMSCopy), this.handle.effects());
      }
  
-@@ -134,6 +136,7 @@ public final class CraftFoodComponent implements FoodComponent {
+@@ -139,6 +141,7 @@ public final class CraftFoodComponent implements FoodComponent {
  
      @Override
      public FoodEffect addEffect(PotionEffect effect, float probability) {
@@ -1561,7 +1558,7 @@ index 6bed0a5c8d9f1ca72678cdf4699128e441a24541..8e03e14d0e65bfdf2196a08220d1408b
  
          assertEquals(itemMeta, new CraftMetaItem(compound.build(), null)); // Paper
 diff --git a/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java b/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
-index d6018439015583fa0344c7c01b2e60a13de29795..aabe3730fa582f442ee0544dd1a9f3123f719c68 100644
+index b6da1c2902139d4c7b01ac7b3407d4f6ac3990e2..1a582ee78334835df79f93cc9fd3669c347d8b3a 100644
 --- a/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
 +++ b/src/test/java/org/bukkit/craftbukkit/inventory/ItemMetaTest.java
 @@ -66,7 +66,7 @@ import org.junit.jupiter.api.Test;

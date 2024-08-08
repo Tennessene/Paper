@@ -52,10 +52,10 @@ index 9d74577af071954e1e37201a96368c1360076209..eafa54c870c3e2aef30c3f9f96f51660
                  throw new IllegalArgumentException("Not implemented. This is a bug");
          }
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index a9acbb181dd72238b63fb08fda1b3bc0d246e36e..d87bfdda1f06a94e97465c105d28989e1d64e1e0 100644
+index 4de88523eda52fc20e06aa85c54890f5dd95a912..a13b56ccdfed5dfc3d0bd559d38dd1ed852a58f7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-@@ -1441,7 +1441,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1448,7 +1448,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          if (this.attributeModifiers == null) return LinkedHashMultimap.create(); // Paper - don't change the components
          SetMultimap<Attribute, AttributeModifier> result = LinkedHashMultimap.create();
          for (Map.Entry<Attribute, AttributeModifier> entry : this.attributeModifiers.entries()) {
@@ -64,7 +64,7 @@ index a9acbb181dd72238b63fb08fda1b3bc0d246e36e..d87bfdda1f06a94e97465c105d28989e
                  result.put(entry.getKey(), entry.getValue());
              }
          }
-@@ -1515,9 +1515,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1522,9 +1522,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
          while (iter.hasNext()) {
              Map.Entry<Attribute, AttributeModifier> entry = iter.next();

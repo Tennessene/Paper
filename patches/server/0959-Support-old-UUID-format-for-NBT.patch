@@ -8,7 +8,7 @@ We have stored UUID in plenty of places that did not get DFU'd
 So just look for old format and load it if it exists.
 
 diff --git a/src/main/java/net/minecraft/nbt/CompoundTag.java b/src/main/java/net/minecraft/nbt/CompoundTag.java
-index df246d69591e1a5822a0109c99b0f67996da71fa..4e005b7b062e3231f564d284887ea1c2783a4e7d 100644
+index e88161e662d5605b50aead673c9b3794874e5f7f..d7bb00a946346dff0b0269cbd65276e146a63fb0 100644
 --- a/src/main/java/net/minecraft/nbt/CompoundTag.java
 +++ b/src/main/java/net/minecraft/nbt/CompoundTag.java
 @@ -232,6 +232,12 @@ public class CompoundTag implements Tag {

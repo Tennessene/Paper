@@ -33,7 +33,7 @@ index 73fe41322e0349ad1d46a760f621b6c91112e90e..19af55ec2bf62b70bd3be44f499b32f5
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc03eefe12 100644
+index ba49ac74a19ee1f14706c7f769aac35fa821ef7d..6f3ab40a9d0bccd9a2c439bf0e200ba5cf0f5f6e 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 @@ -245,6 +245,12 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
@@ -81,7 +81,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
  
          Set<Map.Entry<DataComponentType<?>, Optional<?>>> keys = tag.entrySet();
          for (Map.Entry<DataComponentType<?>, Optional<?>> key : keys) {
-@@ -620,7 +644,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -627,7 +651,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              try {
                  CompoundTag unhandledTag = NbtIo.readCompressed(buf, NbtAccounter.unlimitedHeap());
                  DataComponentPatch unhandledPatch = DataComponentPatch.CODEC.parse(MinecraftServer.getDefaultRegistryAccess().createSerializationContext(NbtOps.INSTANCE), unhandledTag).result().get();
@@ -98,7 +98,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
  
                  for (Entry<DataComponentType<?>, Optional<?>> entry : unhandledPatch.entrySet()) {
                      // Move removed unhandled tags to dedicated removedTags
-@@ -863,6 +895,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -870,6 +902,15 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              itemTag.put(CraftMetaItem.MAX_DAMAGE, this.maxDamage);
          }
  
@@ -114,7 +114,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
          for (Map.Entry<DataComponentType<?>, Optional<?>> e : this.unhandledTags.build().entrySet()) {
              e.getValue().ifPresent((value) -> {
                  itemTag.builder.set((DataComponentType) e.getKey(), value);
-@@ -951,7 +992,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -958,7 +999,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
  
      @Overridden
      boolean isEmpty() {
@@ -123,7 +123,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
      }
  
      // Paper start
-@@ -1621,6 +1662,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1628,6 +1669,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  && (this.hasJukeboxPlayable() ? that.hasJukeboxPlayable() && this.jukebox.equals(that.jukebox) : !that.hasJukeboxPlayable())
                  && (this.hasDamage() ? that.hasDamage() && this.damage == that.damage : !that.hasDamage())
                  && (this.hasMaxDamage() ? that.hasMaxDamage() && this.maxDamage.equals(that.maxDamage) : !that.hasMaxDamage())
@@ -132,7 +132,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
                  && (this.version == that.version);
      }
  
-@@ -1666,6 +1709,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1673,6 +1716,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
          hash = 61 * hash + (this.hasDamage() ? this.damage : 0);
          hash = 61 * hash + (this.hasMaxDamage() ? 1231 : 1237);
          hash = 61 * hash + (this.hasAttributeModifiers() ? this.attributeModifiers.hashCode() : 0);
@@ -141,7 +141,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
          hash = 61 * hash + this.version;
          return hash;
      }
-@@ -1710,6 +1755,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1717,6 +1762,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              clone.damage = this.damage;
              clone.maxDamage = this.maxDamage;
              clone.version = this.version;
@@ -156,7 +156,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
              return clone;
          } catch (CloneNotSupportedException e) {
              throw new Error(e);
-@@ -1827,6 +1880,16 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1834,6 +1887,16 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
              }
          }
  
@@ -173,7 +173,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
          if (!this.unhandledTags.isEmpty()) {
              Tag unhandled = DataComponentPatch.CODEC.encodeStart(MinecraftServer.getDefaultRegistryAccess().createSerializationContext(NbtOps.INSTANCE), this.unhandledTags.build()).getOrThrow(IllegalStateException::new);
              try {
-@@ -1837,6 +1900,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1844,6 +1907,14 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  Logger.getLogger(CraftMetaItem.class.getName()).log(Level.SEVERE, null, ex);
              }
          }
@@ -188,7 +188,7 @@ index 2cf89147025066f34c12b9956d18451487fb2799..078b75f027b99a8a2a6a3ee19d087acc
  
          if (!this.removedTags.isEmpty()) {
              RegistryAccess registryAccess = CraftRegistry.getMinecraftRegistry();
-@@ -1990,6 +2061,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1997,6 +2068,8 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                          CraftMetaItem.MAX_DAMAGE.TYPE,
                          CraftMetaItem.CUSTOM_DATA.TYPE,
                          CraftMetaItem.ATTRIBUTES.TYPE,

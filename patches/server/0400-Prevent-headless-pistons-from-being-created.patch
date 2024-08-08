@@ -6,7 +6,7 @@ Subject: [PATCH] Prevent headless pistons from being created
 Prevent headless pistons from being created by explosions or tree/mushroom growth.
 
 diff --git a/src/main/java/net/minecraft/world/level/Explosion.java b/src/main/java/net/minecraft/world/level/Explosion.java
-index 1350c8df69b4ffcf9daa73549e496627db8bc6f7..69914a048987c21ee2ed2c489aab269862fda8f2 100644
+index 0bb5cd94746e7a9b391d08c3efef8f5cd19ca2cf..0add20466890db9d2af7c595806d5e767b7ee117 100644
 --- a/src/main/java/net/minecraft/world/level/Explosion.java
 +++ b/src/main/java/net/minecraft/world/level/Explosion.java
 @@ -207,6 +207,15 @@ public class Explosion {

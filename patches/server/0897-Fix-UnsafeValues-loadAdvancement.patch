@@ -5,7 +5,7 @@ Subject: [PATCH] Fix UnsafeValues#loadAdvancement
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index 48eeac0795c479ebb2ff64005b1405421131fcd7..1d98c0e9f138f122aa73e2f1dd6d485d7865720d 100644
+index 2d5cb690c332732d1d2a9e78918cd5e8595b37e9..5cbcfef31e2acdf27fc52f466ee70d9146d0228d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -302,9 +302,30 @@ public final class CraftMagicNumbers implements UnsafeValues {

@@ -18,7 +18,7 @@ index 6ad7c34513034c87059f8a0790aea3231dd0d2a9..188b1844ca6ee5a97f7a588121255417
                  biomeProvider = gen.getDefaultBiomeProvider(worldInfo);
              }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 9707b24da58fdc56732d6372038055e8676e9e0d..05dbcff299d42dc05e3a8db0265fb607197731e7 100644
+index 256fa3d0da9ba1240400be1dad8fa3376f5bf33e..5184317f224e50bd414e43ebf37d66fd067c3b7d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1306,7 +1306,7 @@ public final class CraftServer implements Server {

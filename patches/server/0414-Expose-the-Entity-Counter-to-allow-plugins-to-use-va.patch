@@ -21,7 +21,7 @@ index 8a1014d7181b493a24692271aa9c561c159801d3..14ef888ef46a873046a286e25e923d98
 +    // Paper end - Expose entity id counter
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index e6bca66597b9b5a15d911760b44641e17e42e521..2979277847635c0bef54d06be30e5051557cc5e9 100644
+index af706146a26ede6b9f5a39c8deb490ff25334ae6..a557b40e1807933cf510ea489ebcab4a19c066c1 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -505,6 +505,11 @@ public final class CraftMagicNumbers implements UnsafeValues {

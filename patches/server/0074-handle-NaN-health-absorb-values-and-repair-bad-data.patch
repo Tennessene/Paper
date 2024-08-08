@@ -44,7 +44,7 @@ index e7b308ba4a253b270aebebd19e2671514c5357ca..fae7c493c9be741f019fc49f45a59976
  
      protected void internalSetAbsorptionAmount(float absorptionAmount) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index 174c86a7213ecf3c8dc03aeaf55c56a4c4ce55ad..c399264ccffe646be10b3f13ebe0c0103d97f62c 100644
+index 8a2a22aeb027dec3efc0d57ee19b33695b4c5411..af57de9e02fc9c96b1d4614b9bacdc5dd29117d5 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 @@ -2338,6 +2338,7 @@ public class CraftPlayer extends CraftHumanEntity implements Player {

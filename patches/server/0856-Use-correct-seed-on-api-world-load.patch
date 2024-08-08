@@ -5,7 +5,7 @@ Subject: [PATCH] Use correct seed on api world load
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index e81ec7b81302ea5eb5fe75117a7aacbb8b88d0a6..e77a8a77e1b2d5b91083fab6287467fd947092ee 100644
+index d7b495643914d651d7b8b04e9a5595ff1e05e4e2..35b96f8151b87a71b1bebdbdad75964a6f5929d5 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -1396,7 +1396,7 @@ public final class CraftServer implements Server {

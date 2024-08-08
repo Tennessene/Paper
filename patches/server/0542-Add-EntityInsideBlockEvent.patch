@@ -5,10 +5,10 @@ Subject: [PATCH] Add EntityInsideBlockEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/level/block/BaseFireBlock.java b/src/main/java/net/minecraft/world/level/block/BaseFireBlock.java
-index 993538f613e52ecd009f01e7b68fddba76b6a3e8..c36e64c3df09f14ffb06b81ef20c5e200e386e50 100644
+index 779d188bac9744889c1f4f554b300311e0effa29..0c5409af685ef1f251db3d9f9e21295c82a1e02a 100644
 --- a/src/main/java/net/minecraft/world/level/block/BaseFireBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/BaseFireBlock.java
-@@ -124,6 +124,7 @@ public abstract class BaseFireBlock extends Block {
+@@ -125,6 +125,7 @@ public abstract class BaseFireBlock extends Block {
  
      @Override
      protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {

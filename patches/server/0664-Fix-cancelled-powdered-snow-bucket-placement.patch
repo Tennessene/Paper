@@ -8,7 +8,7 @@ snow bucket didn't revert grass that became snowy because of the
 placement.
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index ebc5f2e8d59da4bec25ff156ec95fe49366be59c..823146a66de8ce13e6dc6faf2fd135480bd51c3a 100644
+index 14d6e4548703b9b8640913f77406fff85f28d7ef..eeba6d3aeb50bc7ee6dcfe7cc18eee2487d47357 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -422,7 +422,7 @@ public final class ItemStack implements DataComponentHolder {

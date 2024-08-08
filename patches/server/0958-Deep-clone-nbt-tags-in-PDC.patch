@@ -5,7 +5,7 @@ Subject: [PATCH] Deep clone nbt tags in PDC
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
-index 5a455354561389194b0e61c03f4b2e9285b17a3b..2cf89147025066f34c12b9956d18451487fb2799 100644
+index 11f55ef2645d50bbc24bd245ffe3ac98180315d8..ba49ac74a19ee1f14706c7f769aac35fa821ef7d 100644
 --- a/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 +++ b/src/main/java/org/bukkit/craftbukkit/inventory/CraftMetaItem.java
 @@ -322,7 +322,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
@@ -17,7 +17,7 @@ index 5a455354561389194b0e61c03f4b2e9285b17a3b..2cf89147025066f34c12b9956d184514
  
          this.customTag = meta.customTag;
  
-@@ -1690,7 +1690,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
+@@ -1697,7 +1697,7 @@ class CraftMetaItem implements ItemMeta, Damageable, Repairable, BlockDataMeta {
                  clone.customTag = this.customTag.copy();
              }
              clone.removedTags = Sets.newHashSet(this.removedTags);

@@ -590,7 +590,7 @@ index f077b8ff0bf0d96628db3569132696b68fd79921..5f11f5b16766f9d1d5640ae037e259be
              value.append("\n   Plugins: {");
              for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index acab477a4a026799319054c2eb4d0f2c99ab3d83..2a36e562967ec6174efe456e489c50ca10ba47e5 100644
+index d32ee2729a7f85aa1a6e18cb9c1396506cad0309..70219981d3b0b2a79997d10f7726d7b0f743e195 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -11,8 +11,6 @@ import com.google.common.collect.MapMaker;
@@ -659,7 +659,7 @@ index acab477a4a026799319054c2eb4d0f2c99ab3d83..2a36e562967ec6174efe456e489c50ca
      public List<CraftPlayer> getOnlinePlayers() {
          return this.playerView;
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 1c8049bbc08be77673d375205bd42a346ff951b8..1aa75b11ee3297e379baa111cf53e1cfcd8b016e 100644
+index 8da38624b5867ce88bdb3036e1ed6d99fc626f31..2097be352dc585b805dc73194cec095627f311bc 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -15,6 +15,7 @@ import joptsimple.OptionSet;
@@ -670,7 +670,7 @@ index 1c8049bbc08be77673d375205bd42a346ff951b8..1aa75b11ee3297e379baa111cf53e1cf
      public static boolean useJline = true;
      public static boolean useConsole = true;
  
-@@ -252,15 +253,17 @@ public class Main {
+@@ -241,15 +242,17 @@ public class Main {
                      deadline.add(Calendar.DAY_OF_YEAR, -14);
                      if (buildDate.before(deadline.getTime())) {
                          System.err.println("*** Error, this build is outdated ***");
@@ -692,7 +692,7 @@ index 1c8049bbc08be77673d375205bd42a346ff951b8..1aa75b11ee3297e379baa111cf53e1cf
                  t.printStackTrace();
              }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index 9576cabff99d154ef77595b074082adf9212698d..e091356ee1fa3ec09839de6ef5c450824ea40844 100644
+index 9383bf47404fca8d008d5c401ed37ddaa7bef4f7..d08b01fef9928f2239c8663cf90219dc7acad58c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -453,6 +453,11 @@ public final class CraftMagicNumbers implements UnsafeValues {

@@ -5,7 +5,7 @@ Subject: [PATCH] Optimize call to getFluid for explosions
 
 
 diff --git a/src/main/java/net/minecraft/world/level/Explosion.java b/src/main/java/net/minecraft/world/level/Explosion.java
-index 512d79b66fed3d1bef645c3ecb59bda032c81d15..1350c8df69b4ffcf9daa73549e496627db8bc6f7 100644
+index a5f4ecb96c508b94a92a43c864c075f6c61e296e..0bb5cd94746e7a9b391d08c3efef8f5cd19ca2cf 100644
 --- a/src/main/java/net/minecraft/world/level/Explosion.java
 +++ b/src/main/java/net/minecraft/world/level/Explosion.java
 @@ -193,7 +193,7 @@ public class Explosion {

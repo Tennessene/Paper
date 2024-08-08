@@ -17,7 +17,7 @@ index dae6835696e90bc5a541cacd37ea7aa88c60f4f4..1057679ceec86898a3e62bd183c6944f
          Iterator iterator = list.iterator();
  
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 27e2718124aad69546c1d9adb9c8e69fa4a43ca7..16c244f56813479b2e51f1d883ff739949fc86e3 100644
+index 6944c0b0cfcde9fa4dd78742aee3e3b87d679abf..a9227581ec78a56e96dc3a342006e4a649906326 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -764,6 +764,13 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

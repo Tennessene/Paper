@@ -60,19 +60,19 @@ index e8dcbe7c6d6ed20ad19d2ba1893ad16d917b9993..3e454515360c22a26c9329e4032d5255
                  }
  
 diff --git a/src/main/java/net/minecraft/commands/arguments/EntityArgument.java b/src/main/java/net/minecraft/commands/arguments/EntityArgument.java
-index 2043001c16b3530c2d3f52efda10bcad424881c0..7976885b902a6ce7d80f31e49448c99452eb9765 100644
+index 4edb23c5f08ad742bc63fda9d73d1e234482e982..5e8fac513c3d55c695309f8832835498811766fb 100644
 --- a/src/main/java/net/minecraft/commands/arguments/EntityArgument.java
 +++ b/src/main/java/net/minecraft/commands/arguments/EntityArgument.java
-@@ -131,7 +131,7 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
+@@ -139,7 +139,7 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
              final boolean permission = object instanceof CommandSourceStack stack
                      ? stack.bypassSelectorPermissions || stack.hasPermission(2, "minecraft.command.selector")
-                     : icompletionprovider.hasPermission(2);
+                     : EntitySelectorParser.allowSelectors(icompletionprovider);
 -            EntitySelectorParser argumentparserselector = new EntitySelectorParser(stringreader, permission);
 +            EntitySelectorParser argumentparserselector = new EntitySelectorParser(stringreader, permission, true); // Paper - tell clients to ask server for suggestions for EntityArguments
              // Paper end - Fix EntityArgument suggestion permissions
  
              try {
-@@ -141,7 +141,19 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
+@@ -149,7 +149,19 @@ public class EntityArgument implements ArgumentType<EntitySelector> {
              }
  
              return argumentparserselector.fillSuggestions(suggestionsbuilder, (suggestionsbuilder1) -> {
@@ -94,18 +94,14 @@ index 2043001c16b3530c2d3f52efda10bcad424881c0..7976885b902a6ce7d80f31e49448c994
  
                  SharedSuggestionProvider.suggest((Iterable) iterable, suggestionsbuilder1);
 diff --git a/src/main/java/net/minecraft/commands/arguments/selector/EntitySelectorParser.java b/src/main/java/net/minecraft/commands/arguments/selector/EntitySelectorParser.java
-index 6b6756625f3fb1f36f940c6e31e97b84f32a9990..32b39803380456f40bafdb790eaa27efab5f06a6 100644
+index 6d19085f5da8a65296b4dd32372885fff29e2de7..230da77d50e27b86beab4f8a0979c917501851e6 100644
 --- a/src/main/java/net/minecraft/commands/arguments/selector/EntitySelectorParser.java
 +++ b/src/main/java/net/minecraft/commands/arguments/selector/EntitySelectorParser.java
-@@ -115,12 +115,19 @@ public class EntitySelectorParser {
+@@ -116,8 +116,15 @@ public class EntitySelectorParser {
      private boolean hasScores;
      private boolean hasAdvancements;
      private boolean usesSelectors;
 +    public boolean parsingEntityArgumentSuggestions; // Paper - tell clients to ask server for suggestions for EntityArguments
- 
-     public EntitySelectorParser(StringReader reader) {
-         this(reader, true);
-     }
  
      public EntitySelectorParser(StringReader reader, boolean atAllowed) {
 +        // Paper start - tell clients to ask server for suggestions for EntityArguments

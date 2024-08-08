@@ -77,7 +77,7 @@ index 428e454116804c27496cfbf796edd44780890d33..4c7e91977fa590abfe7eb3704d8008ed
 +    // Paper end - Add missing InventoryHolders
  }
 diff --git a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
-index 1b6fd16d8c6195c6f7b65c7621d5f9bd15c46a75..7f513e8c4f81524aee9326ddbbc6bec0b3fa1b27 100644
+index a735aeeb59f79154ce797c6e2f5600305f46d217..b93c118d957f0a2f40e2f31fd6400bd69438cf72 100644
 --- a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 @@ -42,7 +42,7 @@ public class BeaconMenu extends AbstractContainerMenu {
@@ -148,10 +148,10 @@ index 85e336637db8643fc5aca1dba724c9b341cbf46f..12b466ccb7c36021cf807c4f3fd2bcb0
              @Override
              public <T> Optional<T> evaluate(BiFunction<Level, BlockPos, T> getter) {
 diff --git a/src/main/java/net/minecraft/world/inventory/EnchantmentMenu.java b/src/main/java/net/minecraft/world/inventory/EnchantmentMenu.java
-index 6f88ce0076460215f5c1a965aa2bd7050071b611..c1b9c3ad2cccfa520e9d73b786142624ac5f3380 100644
+index 2fa009b33bccd6aeee30f23f9207ab039740d95d..fff1c39920e7d7051dfe3dd39c77865d3bdf113e 100644
 --- a/src/main/java/net/minecraft/world/inventory/EnchantmentMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/EnchantmentMenu.java
-@@ -66,7 +66,7 @@ public class EnchantmentMenu extends AbstractContainerMenu {
+@@ -63,7 +63,7 @@ public class EnchantmentMenu extends AbstractContainerMenu {
  
      public EnchantmentMenu(int syncId, Inventory playerInventory, ContainerLevelAccess context) {
          super(MenuType.ENCHANTMENT, syncId);
@@ -206,7 +206,7 @@ index be840717e180b6b5abd14db6cc9263349737f9a3..7de5e47f9a54263734eeef855a2dc07e
              public void setChanged() {
                  super.setChanged();
 diff --git a/src/main/java/net/minecraft/world/inventory/LoomMenu.java b/src/main/java/net/minecraft/world/inventory/LoomMenu.java
-index 72ad78659a373213ed1f37498754adaf18f1f68b..4f3f6ea43030853bd9df067358a1f4d16c40e6d4 100644
+index f76ef029132c6a08d4e70585bc440eccdc626b16..7d7b4e53682107a1a75a7aa205be1e6bfdc8c551 100644
 --- a/src/main/java/net/minecraft/world/inventory/LoomMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/LoomMenu.java
 @@ -73,7 +73,7 @@ public class LoomMenu extends AbstractContainerMenu {
@@ -261,7 +261,7 @@ index d4592218d761eb38402e3d95c642e80a708cb333..4c4266a85c38e41e6c7e6144a68624f4
      public ResultContainer() {
          this.itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
 diff --git a/src/main/java/net/minecraft/world/inventory/StonecutterMenu.java b/src/main/java/net/minecraft/world/inventory/StonecutterMenu.java
-index 977ccef3c9fa7685209f3eca894a3b69501ebcc1..5ddae1afab0a68465ea60395c84b0997ee994f88 100644
+index 37e75c02c374314372630f4bda0b92519809f2a4..5a0015f761f6a25d7bb7b9cfe7a9b4771a6a37ec 100644
 --- a/src/main/java/net/minecraft/world/inventory/StonecutterMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/StonecutterMenu.java
 @@ -69,7 +69,7 @@ public class StonecutterMenu extends AbstractContainerMenu {

@@ -108,7 +108,7 @@ index 04286e907ff14cc8c45dbfc6ab12f520afcca2ca..8142e4a238066404f3d1685f9cee1a2b
              this.getPlayerList().reloadResources();
              this.functionManager.replaceLibrary(this.resources.managers.getFunctionLibrary());
 diff --git a/src/main/java/net/minecraft/world/inventory/BrewingStandMenu.java b/src/main/java/net/minecraft/world/inventory/BrewingStandMenu.java
-index a7c33675c3777cfbeeecbb3a123a0b03195e679c..93c4657f345b6d3442b1f2ab17b2703ded86b525 100644
+index 993abd8b0b80bfc7a1ce936eaaf3e0804fc9e0a4..eb2cdb36366e376b4e91aea847170b82ca26d274 100644
 --- a/src/main/java/net/minecraft/world/inventory/BrewingStandMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/BrewingStandMenu.java
 @@ -53,9 +53,11 @@ public class BrewingStandMenu extends AbstractContainerMenu {
@@ -282,7 +282,7 @@ index c8f9972ad1c2330908cc840d426f29c20b242ca8..a2fafef89d5354e2cb02f56728109099
      }
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 6f6d4a82c350864a60f084eb341d59cf025cde77..ee6bdc985e8396e873bfd5c1f1d0046e2e830784 100644
+index 69feb003b3305fec2518ecb21d706ff8e6ea04d7..b82e3ddc042abdd5ff76c31afe1d87eee5dbec0a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -308,6 +308,7 @@ public final class CraftServer implements Server {

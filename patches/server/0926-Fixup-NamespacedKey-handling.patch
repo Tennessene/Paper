@@ -5,7 +5,7 @@ Subject: [PATCH] Fixup NamespacedKey handling
 
 
 diff --git a/src/main/java/net/minecraft/world/inventory/LoomMenu.java b/src/main/java/net/minecraft/world/inventory/LoomMenu.java
-index 4f3f6ea43030853bd9df067358a1f4d16c40e6d4..531336c44c46555fef8c001fe8ca00c93624ad42 100644
+index 7d7b4e53682107a1a75a7aa205be1e6bfdc8c551..0e954dfe82ed263cbe63dbf49ff49e83f38228b8 100644
 --- a/src/main/java/net/minecraft/world/inventory/LoomMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/LoomMenu.java
 @@ -171,12 +171,28 @@ public class LoomMenu extends AbstractContainerMenu {
@@ -52,10 +52,10 @@ index e34deaf398dc6722c3128bdd6b9bc16da2d33bf7..f028daa4f23a1f1868c9922991259739
  
      public static NamespacedKey minecraftToBukkitKey(ResourceKey<LootTable> minecraft) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
-index b6c7522ff8522cdadf3b291a9c2ac87c60b85d2a..fc9aec589414bf8d3f672183928235b5b51d1a02 100644
+index 96e7a493eeef865eb52e92aeec993b67d8d4a4fa..c2824cc07b761958a0df4b110bdfc53bd853b9e7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftRegistry.java
-@@ -118,6 +118,16 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
+@@ -120,6 +120,18 @@ public class CraftRegistry<B extends Keyed, M> implements Registry<B> {
                  + ", this can happen if a plugin creates its own registry entry with out properly registering it.");
      }
  
@@ -69,9 +69,11 @@ index b6c7522ff8522cdadf3b291a9c2ac87c60b85d2a..fc9aec589414bf8d3f672183928235b5
 +    }
 +    // Paper end - fixup upstream being dum
 +
-     // Paper - move to PaperRegistries
- 
++    // Paper - move to PaperRegistries
++
      // Paper - NOTE: As long as all uses of the method below relate to *serialization* via ConfigurationSerializable, it's fine
+     public static <B extends Keyed> B get(Registry<B> bukkit, NamespacedKey namespacedKey, ApiVersion apiVersion) {
+         if (bukkit instanceof CraftRegistry<B, ?> craft) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/attribute/CraftAttribute.java b/src/main/java/org/bukkit/craftbukkit/attribute/CraftAttribute.java
 index cc97638e038ea64ad180ebfded2528aa07d1809e..10e4318782107644f67818109784fff60d017e0a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/attribute/CraftAttribute.java

@@ -273,10 +273,10 @@ index 6476c644d3da824c5ee4190cb45cde678ff1188f..a5f4ecb96c508b94a92a43c864c075f6
                          // CraftBukkit end
                          entity.setDeltaMovement(entity.getDeltaMovement().add(vec3d1));
 diff --git a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-index 1c53b872b30bcd8535b8686015935025a4c9837f..0888692736ef62e741aa41d3a72b9b8c3075dfcd 100644
+index 2969e9c471827f59de9093b75eec8440a9d31b73..32396531d079e18acf566bbae09426e93316fd5a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
 +++ b/src/main/java/org/bukkit/craftbukkit/event/CraftEventFactory.java
-@@ -1909,19 +1909,33 @@ public class CraftEventFactory {
+@@ -1923,19 +1923,33 @@ public class CraftEventFactory {
          return event;
      }
  

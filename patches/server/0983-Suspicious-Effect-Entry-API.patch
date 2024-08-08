@@ -14,7 +14,7 @@ in which it replaces PotionEffect.
 Co-authored-by: Yannick Lamprecht <yannicklamprecht@live.de>
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
-index 9cc81bcccbf1141f66fedada1359b7c0dfa8e22a..5c5b64bd058684520fa175bfd10622ff57856b7c 100644
+index 5ac263889ff9cc4f4f6365ccb57917a23ad6edc1..246f97884b33ff37d3c4b693818224ba8aa5b93b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftMushroomCow.java
 @@ -37,16 +37,24 @@ public class CraftMushroomCow extends CraftCow implements MushroomCow, io.paperm

@@ -5,7 +5,7 @@ Subject: [PATCH] Add PlayerChangeBeaconEffectEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
-index c2fa423e14fc08c10483415baa2148af269c3758..5b6133f6758d322713321b7e918db0c3e0d4be51 100644
+index 7c4d2c184d9a1e4a1856e6771d39db384381e300..396559c281eee9e8c677cb222721414e8d9e12a2 100644
 --- a/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 +++ b/src/main/java/net/minecraft/world/inventory/BeaconMenu.java
 @@ -171,12 +171,25 @@ public class BeaconMenu extends AbstractContainerMenu {

@@ -22,7 +22,7 @@ index 7d76cdc59984b156628273c8357485eb10046007..7180996027f70aef7afe32fb2adfce64
                      itemstack.consume(1, entityhuman);
                      return InteractionResult.sidedSuccess(world.isClientSide);
 diff --git a/src/main/java/net/minecraft/world/level/Level.java b/src/main/java/net/minecraft/world/level/Level.java
-index 210c3b6167dac93e550fe849e34b5aa404ab6dce..ed1c50d31fc077e4e009719fa622a44edefcdf2c 100644
+index cc92d2e8b77c75da1d8b850c3bc251e8ac221c24..0a3e56302470f239d4840e4e32d2a0ce4611ff65 100644
 --- a/src/main/java/net/minecraft/world/level/Level.java
 +++ b/src/main/java/net/minecraft/world/level/Level.java
 @@ -552,17 +552,18 @@ public abstract class Level implements LevelAccessor, AutoCloseable {

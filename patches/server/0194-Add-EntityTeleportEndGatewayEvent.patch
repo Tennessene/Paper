@@ -5,7 +5,7 @@ Subject: [PATCH] Add EntityTeleportEndGatewayEvent
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 946f289e0e681524c6fde696921965dbdedda372..d6017d9d71fb4b3a3df6eaa44da0ebda54c83da4 100644
+index 0e800e3aeeec84f5f7ed0a391c9b66ae5689bd40..fd49b9d739b1bbab8cf110659cb83bad03b56102 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -3301,8 +3301,16 @@ public abstract class Entity implements SyncedDataHolder, Nameable, EntityAccess

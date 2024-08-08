@@ -6,7 +6,7 @@ Subject: [PATCH] fix Instruments
 properly handle Player#playNote
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index cc631c6882ee623cb1191b9d422a7adc4fa742a2..c426dbff75f0ad3889594fba9a66669fc71b63e8 100644
+index cdcdb55f896bb4128f258bf2aee91dc60100b6de..fc0db6deca6ff3b8e083fccd312e6ff3b5a78616 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 @@ -768,7 +768,10 @@ public class CraftPlayer extends CraftHumanEntity implements Player {

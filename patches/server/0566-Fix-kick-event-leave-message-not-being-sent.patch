@@ -101,7 +101,7 @@ index 0a5cad166e852888208125a80b5e2d5e7e9a3a82..dd728c297335581ad69c94f768ec5201
              this.server.getPlayerList().broadcastSystemMessage(PaperAdventure.asVanilla(quitMessage), false);
              // Paper end
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index 0474b88416e0d016da38909196d32fe992b37d00..5b449dd681390eb7aee229a3b6366dcbb96ce2d7 100644
+index 46f46685081c3c164bd4ba306dfb1220a4e13e52..b36cb031b153c452c7f030105f6963072b5858fc 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -561,6 +561,11 @@ public abstract class PlayerList {
