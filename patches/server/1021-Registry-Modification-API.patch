@@ -9,7 +9,7 @@ public net.minecraft.resources.RegistryOps lookupProvider
 public net.minecraft.resources.RegistryOps$HolderLookupAdapter
 
 diff --git a/src/main/java/io/papermc/paper/registry/PaperRegistries.java b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
-index 183a649cadcf96f2ecca18fef9b93f0176febeab..22715ff8b21d76004e8995758fb4aa05b2ec3486 100644
+index 3cc03a8ce584b0e8db0054b75a67062d0cd6cc7e..ad0ba4b9f7e74b53e3dac1ae02476324da428d53 100644
 --- a/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 +++ b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 @@ -2,6 +2,7 @@ package io.papermc.paper.registry;
@@ -28,7 +28,7 @@ index 183a649cadcf96f2ecca18fef9b93f0176febeab..22715ff8b21d76004e8995758fb4aa05
  
  @DefaultQualifier(NonNull.class)
  public final class PaperRegistries {
-@@ -139,6 +141,15 @@ public final class PaperRegistries {
+@@ -138,6 +140,15 @@ public final class PaperRegistries {
          return ResourceKey.create((ResourceKey<? extends Registry<M>>) PaperRegistries.registryToNms(typedKey.registryKey()), PaperAdventure.asVanilla(typedKey.key()));
      }
  

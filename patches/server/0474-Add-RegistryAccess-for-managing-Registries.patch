@@ -12,10 +12,10 @@ public net.minecraft.server.RegistryLayer STATIC_ACCESS
 
 diff --git a/src/main/java/io/papermc/paper/registry/PaperRegistries.java b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..183a649cadcf96f2ecca18fef9b93f0176febeab
+index 0000000000000000000000000000000000000000..3cc03a8ce584b0e8db0054b75a67062d0cd6cc7e
 --- /dev/null
 +++ b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
-@@ -0,0 +1,144 @@
+@@ -0,0 +1,143 @@
 +package io.papermc.paper.registry;
 +
 +import io.papermc.paper.adventure.PaperAdventure;
@@ -110,7 +110,6 @@ index 0000000000000000000000000000000000000000..183a649cadcf96f2ecca18fef9b93f01
 +            apiOnly(Registries.BIOME, RegistryKey.BIOME, () -> org.bukkit.Registry.BIOME),
 +            apiOnly(Registries.PAINTING_VARIANT, RegistryKey.PAINTING_VARIANT, () -> org.bukkit.Registry.ART),
 +            apiOnly(Registries.ATTRIBUTE, RegistryKey.ATTRIBUTE, () -> org.bukkit.Registry.ATTRIBUTE),
-+            apiOnly(Registries.BANNER_PATTERN, RegistryKey.BANNER_PATTERN, () -> org.bukkit.Registry.BANNER_PATTERN),
 +            apiOnly(Registries.ENTITY_TYPE, RegistryKey.ENTITY_TYPE, () -> org.bukkit.Registry.ENTITY_TYPE),
 +            apiOnly(Registries.PARTICLE_TYPE, RegistryKey.PARTICLE_TYPE, () -> org.bukkit.Registry.PARTICLE_TYPE),
 +            apiOnly(Registries.POTION, RegistryKey.POTION, () -> org.bukkit.Registry.POTION),

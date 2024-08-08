@@ -5,7 +5,7 @@ Subject: [PATCH] Add registry entry and builders
 
 
 diff --git a/src/main/java/io/papermc/paper/registry/PaperRegistries.java b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
-index 22715ff8b21d76004e8995758fb4aa05b2ec3486..a853abaa9a714d97cf689d490b22f2a3cd5e8df2 100644
+index ad0ba4b9f7e74b53e3dac1ae02476324da428d53..8ee45ac0edc7e93994a6f880cb2a87b12a1dd875 100644
 --- a/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 +++ b/src/main/java/io/papermc/paper/registry/PaperRegistries.java
 @@ -1,6 +1,8 @@
