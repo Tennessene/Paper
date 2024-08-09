@@ -82,14 +82,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           ./gradlew applyPatches --stacktrace
 
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Test Results (${{ matrix.java }})
-          path: |
-            **/build/test-results/test/TEST-*.xml
-
       - name: Create Paperclip Jar
         if: fromJSON(steps.determine.outputs.result).action == 'paperclip'
         run: ./gradlew createReobfPaperclipJar --stacktrace
